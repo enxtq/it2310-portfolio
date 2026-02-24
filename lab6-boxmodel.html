@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 6 – CSS Box Model</title>
+
+  <style>
+    /* =========================================================
+       PART 4: The box-sizing Experiment
+       ---------------------------------------------------------
+       STEP 1 (do this first): Comment OUT the universal rule
+       below to see the DEFAULT box model (content-box).
+       You should see a total width of ~350px in DevTools.
+       
+       STEP 4 (after inspecting): UNcomment it again to enable
+       border-box so the total width is exactly 300px.
+       ========================================================= */
+
+    /* ---- Toggle this block per Step 1 vs Step 4 ---- */
+    /* For STEPS 1–3: keep this block COMMENTED OUT.
+       For STEP 4: UNCOMMENT it.                        */
+    * {
+      box-sizing: border-box;   /* Turn ON for Step 4 */
+    }
+    /* ------------------------------------------------- */
+
+    /* Base box styling used for the experiment */
+    .box {
+      width: 300px;              /* Step 2: explicit width for the demo */
+      border: 5px solid blue;
+      padding: 20px;
+      margin: 20px;
+      background-color: lightgray;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    /* Just to visually distinguish Box 3 */
+    .experiment {
+      border-color: green;
+    }
+
+    /* Optional: keep the page tidy on wide screens */
+    body {
+      margin: 0.5rem;
+    }
+    h1 {
+      margin: 0.5rem 0 0.75rem;
+      font-size: 1.6rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSS Box Model Lab</h1>
+
+  <div class="box">
+    <p>This is Box 1. It demonstrates the CSS Box Model.</p>
+  </div>
+
+  <div class="box">
+    <p>This is Box 2. Notice the margin between boxes.</p>
+  </div>
+
+  <div class="box experiment">
+    <p>This is Box 3. It has additional experimental styles.</p>
+  </div>
+</body>
+</html>
