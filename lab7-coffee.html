@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Haven</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brown-900: #4E342E;   /* header/footer background */
+      --brown-700: #6D4C41;   /* nav background */
+      --brown-500: #8D6E63;   /* card background */
+      --cream-50:  #FFF8E1;   /* text on dark */
+      --cream-100: #EFEBE9;   /* page background */
+      --shadow: 0 6px 18px rgba(0,0,0,.14);
+      --radius: 12px;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+      background: var(--cream-100);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      grid-area: header;
+      background: var(--brown-900);
+      color: var(--cream-50);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .header h1 { font-size: 2.25rem; letter-spacing: .5px; }
+    .header p { opacity: .9; margin-top: .35rem; }
+
+    /* ===== NAV ===== */
+    .nav {
+      grid-area: nav;
+      background: var(--brown-700);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.9rem 1rem;
+    }
+    .nav a {
+      color: var(--cream-50);
+      font-weight: bold;
+      text-decoration: none;
+      padding: .4rem .6rem;
+      border-radius: 6px;
+    }
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: rgba(255,255,255,.12);
+      outline: none;
+    }
+
+    /* ===== MAIN ===== */
+    .main-content {
+      grid-area: main;
+      padding: 2rem 1rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      color: var(--brown-900);
+      margin: 0 0 1.5rem;
+      font-size: 1.6rem;
+    }
+
+    /* ===== MENU CARDS ===== */
+    .menu-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .menu-card {
+      background: var(--brown-500);
+      color: var(--cream-50);
+      width: clamp(240px, 45vw, 260px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .menu-card:hover { transform: translateY(-2px); }
+
+    .menu-media {
+      width: 100%;
+      aspect-ratio: 4 / 3;     /* keeps all cards same height */
+      object-fit: cover;        /* crops neatly without distortion */
+      display: block;
+      /* subtle warm tone to match palette */
+      filter: saturate(0.96) contrast(0.98) sepia(0.06);
+    }
+
+    .menu-body {
+      padding: 1rem 1.1rem 1.2rem;
+      text-align: center;
+    }
+    .menu-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: .35rem;
+    }
+    .menu-desc {
+      opacity: .95;
+      font-size: .95rem;
+      line-height: 1.35;
+      margin: 0 0 .65rem;
+    }
+    .menu-price {
+      display: inline-block;
+      background: rgba(0,0,0,.18);
+      padding: .28rem .6rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    /* ===== ABOUT & CONTACT ===== */
+    .about,
+    .contact {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.25rem 1.4rem;
+      margin-top: 2rem;
+      color: #3b2d29;
+    }
+    .about p { line-height: 1.6; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .contact dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: .4rem 1rem;
+      align-items: baseline;
+    }
+    .contact dt {
+      font-weight: 700;
+      color: var(--brown-900);
+    }
+    .contact a {
+      color: #2c6e91;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .map {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      aspect-ratio: 16 / 9;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      grid-area: footer;
+      background: var(--brown-900);
+      color: var(--cream-50);
+      text-align: center;
+      padding: 1rem;
+      font-size: .95rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .nav ul { flex-direction: column; align-items: center; gap: .5rem; }
+      .menu-card { width: 100%; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Java Haven</h1>
+    <p>Your daily dose of caffeine and comfort.</p>
+  </header>
+
+  <nav class="nav" aria-label="Primary">
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <!-- MENU -->
+    <section id="menu" aria-labelledby="menu-title">
+      <h2 id="menu-title" class="section-title">Featured Coffees</h2>
+
+      <div class="menu-grid">
+        <!-- Espresso -->
+        <article class="menu-card">
+          <img
+            class="menu-media"
+            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop"
+            alt="A single espresso shot with rich crema in a small cup"
+            loading="lazy"
+          />
+          <div class="menu-body">
+            <div class="menu-name">Espresso</div>
+            <p class="menu-desc">A bold single shot pulled to perfection.</p>
+            <span class="menu-price">$2.75</span>
+          </div>
+        </article>
+
+        <!-- Cappuccino -->
+        <article class="menu-card">
+          <img
+            class="menu-media"
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop"
+            alt="Cappuccino in a ceramic cup topped with foamed milk"
+            loading="lazy"
+          />
+          <div class="menu-body">
+            <div class="menu-name">Cappuccino</div>
+            <p class="menu-desc">Equal parts espresso, steamed milk, and foam.</p>
+            <span class="menu-price">$3.95</span>
+          </div>
+        </article>
+
+        <!-- Latte (UPDATED TO YOUR LINK) -->
+        <article class="menu-card">
+          <img
+            class="menu-media"
+            src="https://cooktoria.com/wp-content/uploads/2018/10/Strarbucks-Chai-Tea-Latte-Recipe-SQ-1.jpg"
+            alt="Latte in a glass mug on a saucer with a heart-shaped foam pattern"
+            loading="lazy"
+          />
+          <div class="menu-body">
+            <div class="menu-name">Latte</div>
+            <p class="menu-desc">Silky steamed milk over a double shot.</p>
+            <span class="menu-price">$4.25</span>
+          </div>
+        </article>
+
+        <!-- Mocha -->
+        <article class="menu-card">
+          <img
+            class="menu-media"
+            src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1200&auto=format&fit=crop"
+            alt="Mocha coffee with chocolate notes in a ceramic cup"
+            loading="lazy"
+          />
+          <div class="menu-body">
+            <div class="menu-name">Mocha</div>
+            <p class="menu-desc">Espresso, cocoa, and milk—sweet & rich.</p>
+            <span class="menu-price">$4.75</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About Us</h2>
+      <p>
+        At Java Haven, we believe coffee is a daily ritual worth savoring.
+        Our beans are sourced from small farms, roasted in small batches,
+        and brewed with care. Settle in and stay awhile—there’s always a
+        seat for neighbors here.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+
+      <div class="contact-grid">
+        <div>
+          <dl>
+            <dt>Address</dt>
+            <dd>123 Roastery Ln, Cleveland, OH 44113</dd>
+
+            <dt>Phone</dt>
+            <dd><a href="tel:+12165551234">(216) 555‑1234</a></dd>
+
+            <dt>Email</dt>
+            <dd><a href="mailto:S01374246@acad.tri-c.edu">S01374246@acad.tri-c.edu</a></dd>
+
+            <dt>Hours</dt>
+            <dd>Mon–Fri 7:00a–6:00p · Sat–Sun 8:00a–5:00p</dd>
+          </dl>
+        </div>
+
+        <!-- Sample map; replace with your exact Google Maps embed if desired -->
+        <iframe
+          class="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.552535479274!2d-81.694359!3d41.497493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8830f06b6a4a0d7d%3A0x0000000000000000!2sDowntown%20Cleveland!5e0!3m2!1sen!2sus!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Java Haven"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Java Haven. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
