@@ -21,61 +21,36 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
         }
 
         button:hover {
             background-color: #45a049;
-        }
-
-        #greeting {
-            font-size: 22px;
-            margin-top: 20px;
-            color: #333;
         }
     </style>
 </head>
 <body>
 
     <h1>Welcome to My Page</h1>
-
-    <!-- Your name (instead of document.write) -->
-    <p>Created by: Adrian Peterson</p>
-
-    <!-- Main button -->
     <button id="nameButton">Click Me!</button>
 
-    <!-- Second bonus button -->
-    <button id="alertButton">Show Alert</button>
-
-    <!-- Greeting appears here -->
-    <p id="greeting"></p>
-
     <script>
-        // Select elements
-        const nameButton = document.getElementById("nameButton");
-        const alertButton = document.getElementById("alertButton");
-        const greeting = document.getElementById("greeting");
+        // PART 1: Output your name using document.write
+        document.write("<p>Created by: Adrian Peterson</p>");
 
-        // Main button click event
-        nameButton.addEventListener("click", () => {
+        // PART 2: Select the button using its ID
+        const button = document.getElementById("nameButton");
+
+        // PART 3: Add a click event listener to the button
+        button.addEventListener("click", () => {
+            // Prompt the user to enter their name
             const user = prompt("What is your name?");
 
+            // Update button text depending on input
             if (user) {
-                // Bonus: Display greeting in paragraph
-                greeting.textContent = `Nice to meet you, ${user}! Welcome to my page.`;
-
-                // Bonus: Change the button color when clicked
-                nameButton.style.backgroundColor = "#FF9800";
+                button.textContent = `Hello, ${user}!`;
             } else {
-                greeting.textContent = "";
-                nameButton.style.backgroundColor = "#4CAF50"; // reset default color
+                button.textContent = "Click Me!";
             }
-        });
-
-        // Bonus: Second button that shows an alert instead
-        alertButton.addEventListener("click", () => {
-            alert("This is a bonus alert message!");
         });
     </script>
 
