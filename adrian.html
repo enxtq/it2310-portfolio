@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adrian Peterson — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   THEME VARIABLES
+═══════════════════════════════════════════ */
+:root {
+  --font: 'Nunito', sans-serif;
+  --mono: 'Space Mono', monospace;
+}
+[data-theme="dark"] {
+  --bg: #1a1a2e;
+  --bg2: #16213e;
+  --sidebar-bg: #0f0f23;
+  --sidebar-hover: #1a1a35;
+  --sidebar-active: #1a1a3e;
+  --topbar-bg: #111128;
+  --card: #1e1e3a;
+  --card2: #252545;
+  --border: rgba(255,255,255,.08);
+  --text: #ffffff;
+  --text2: #a0a0c0;
+  --text3: #666680;
+  --accent: #0066ff;
+  --accent2: #1877f2;
+  --green: #00b06f;
+  --red: #e03030;
+  --yellow: #ffcc00;
+  --shadow: rgba(0,0,0,.4);
+  --login-overlay: rgba(10,10,30,.85);
+}
+[data-theme="light"] {
+  --bg: #f0f4ff;
+  --bg2: #e8eeff;
+  --sidebar-bg: #ffffff;
+  --sidebar-hover: #f0f4ff;
+  --sidebar-active: #e0e8ff;
+  --topbar-bg: #ffffff;
+  --card: #ffffff;
+  --card2: #f5f7ff;
+  --border: rgba(0,0,0,.08);
+  --text: #1a1a3e;
+  --text2: #4a4a7a;
+  --text3: #8888aa;
+  --accent: #0066ff;
+  --accent2: #1877f2;
+  --green: #00b06f;
+  --red: #e03030;
+  --yellow: #e6a800;
+  --shadow: rgba(0,0,30,.12);
+  --login-overlay: rgba(20,30,80,.75);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* ═══════════════════════════════════════════
+   LOGIN SCREEN
+═══════════════════════════════════════════ */
+#login-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.login-bg {
+  position: absolute; inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 6px; padding: 6px;
+  animation: bgRotate 60s linear infinite;
+}
+@keyframes bgRotate { 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(20deg)} }
+.login-bg-tile {
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  opacity: .55;
+  transition: opacity .3s;
+}
+.login-bg-tile:hover { opacity: .75; }
+/* Roblox-like game tiles with colored gradients + text */
+.lbt-1 { background: linear-gradient(135deg,#1a0a2e,#4a1a6e); }
+.lbt-2 { background: linear-gradient(135deg,#0a1a2e,#1a4a8e); }
+.lbt-3 { background: linear-gradient(135deg,#0a2e0a,#1a7a1a); }
+.lbt-4 { background: linear-gradient(135deg,#2e1a0a,#8e4a1a); }
+.lbt-5 { background: linear-gradient(135deg,#2e0a0a,#8e1a1a); }
+.lbt-6 { background: linear-gradient(135deg,#0a2e2e,#1a7a7a); }
+.lbt-7 { background: linear-gradient(135deg,#2e2e0a,#8e8e1a); }
+.lbt-8 { background: linear-gradient(135deg,#1a0a2e,#5a1a8e); }
+.lbt-9 { background: linear-gradient(135deg,#0a1a2e,#2a5aae); }
+.lbt-10 { background: linear-gradient(135deg,#0a2e1a,#1a8e5a); }
+.lbt-11 { background: linear-gradient(135deg,#2e0a1a,#8e1a5a); }
+.lbt-12 { background: linear-gradient(135deg,#1a2e0a,#5a8e1a); }
+.lbt-13 { background: linear-gradient(135deg,#0a0a2e,#1a1a9e); }
+.lbt-14 { background: linear-gradient(135deg,#2e1a1a,#9e4a4a); }
+.lbt-15 { background: linear-gradient(135deg,#0a2e2e,#2a9e9e); }
+.lbt-16 { background: linear-gradient(135deg,#2e0a2e,#9e1a9e); }
+.lbt-17 { background: linear-gradient(135deg,#1a2e2e,#4a9e9e); }
+.lbt-18 { background: linear-gradient(135deg,#2e2e1a,#9e9e4a); }
+
+.login-overlay {
+  position: absolute; inset: 0;
+  background: var(--login-overlay);
+  backdrop-filter: blur(2px);
+}
+.login-box {
+  position: relative; z-index: 2;
+  background: rgba(20,20,40,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: min(420px, 90vw);
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  backdrop-filter: blur(20px);
+}
+.login-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 6px;
+}
+.login-logo-text {
+  font-size: 1.5rem; font-weight: 900;
+  letter-spacing: -.5px; color: #fff;
+}
+.login-subtitle {
+  font-size: .85rem; color: rgba(255,255,255,.5);
+  margin-bottom: 28px;
+}
+.login-title {
+  font-size: 1.3rem; font-weight: 900; color: #fff;
+  margin-bottom: 20px;
+}
+.login-field {
+  margin-bottom: 10px; text-align: left;
+}
+.login-field input {
+  width: 100%;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  color: #fff; font-family: var(--font);
+  font-size: .9rem; padding: 12px 14px;
+  outline: none; transition: border-color .15s;
+}
+.login-field input::placeholder { color: rgba(255,255,255,.35); }
+.login-field input:focus { border-color: rgba(255,255,255,.4); }
+.login-btn {
+  width: 100%; margin-top: 6px;
+  background: #fff; color: #111;
+  border: none; border-radius: 8px;
+  font-family: var(--font); font-weight: 800;
+  font-size: .95rem; padding: 13px;
+  cursor: pointer; transition: background .15s, transform .1s;
+}
+.login-btn:hover { background: #e8e8e8; transform: translateY(-1px); }
+.login-btn:active { transform: none; }
+.login-divider {
+  display: flex; align-items: center; gap: 10px;
+  margin: 16px 0;
+}
+.login-divider::before, .login-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(255,255,255,.1);
+}
+.login-divider span { font-size: .78rem; color: rgba(255,255,255,.35); }
+.login-alt-btns { display: flex; flex-direction: column; gap: 8px; }
+.login-alt-btn {
+  width: 100%; padding: 11px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; color: rgba(255,255,255,.7);
+  font-family: var(--font); font-size: .85rem; font-weight: 700;
+  cursor: pointer; transition: background .15s;
+}
+.login-alt-btn:hover { background: rgba(255,255,255,.1); }
+.login-no-acc {
+  margin-top: 18px; font-size: .8rem; color: rgba(255,255,255,.4);
+}
+.login-no-acc a {
+  color: rgba(255,255,255,.7); text-decoration: none; font-weight: 700;
+}
+.login-enter-btn {
+  width: 100%; margin-top: 12px;
+  background: linear-gradient(135deg, #0066ff, #0044cc);
+  color: #fff; border: none; border-radius: 8px;
+  font-family: var(--font); font-weight: 800;
+  font-size: 1rem; padding: 14px;
+  cursor: pointer; transition: opacity .15s, transform .1s;
+  box-shadow: 0 4px 20px rgba(0,100,255,.3);
+}
+.login-enter-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════════
+   MAIN APP
+═══════════════════════════════════════════ */
+#app {
+  display: none;
+  min-height: 100vh;
+}
+#app.active { display: flex; flex-direction: column; }
+
+/* ── TOP BAR ── */
+#topbar {
+  position: sticky; top: 0; z-index: 100;
+  height: 52px;
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 20px; gap: 20px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: background .3s;
+}
+.topbar-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 900; font-size: 1.1rem;
+  letter-spacing: -.3px; color: var(--text);
+  text-decoration: none; flex-shrink: 0;
+  cursor: pointer;
+}
+.topbar-nav {
+  display: flex; align-items: center; gap: 2px;
+  list-style: none;
+}
+.topbar-nav a {
+  display: block; padding: 5px 12px;
+  color: var(--text2); text-decoration: none;
+  font-weight: 700; font-size: .82rem;
+  border-radius: 6px; transition: color .12s, background .12s;
+  cursor: pointer;
+}
+.topbar-nav a:hover { color: var(--text); background: var(--sidebar-hover); }
+
+.topbar-search {
+  flex: 1; max-width: 340px;
+  position: relative;
+}
+.topbar-search input {
+  width: 100%;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text);
+  font-family: var(--font); font-size: .84rem;
+  padding: 7px 14px 7px 36px; outline: none;
+  transition: border-color .15s;
+}
+.topbar-search input:focus { border-color: var(--accent); }
+.topbar-search input::placeholder { color: var(--text3); }
+.topbar-search-ico {
+  position: absolute; left: 10px; top: 50%;
+  transform: translateY(-50%); color: var(--text3);
+  font-size: .9rem; pointer-events: none;
+}
+.topbar-search-dropdown {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px;
+  box-shadow: 0 10px 30px var(--shadow);
+  display: none; z-index: 200;
+}
+.topbar-search-dropdown.show { display: block; }
+.search-try { font-size: .72rem; font-weight: 800; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-family: var(--mono); }
+.search-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.search-chip {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 99px; padding: 4px 12px;
+  font-size: .78rem; font-weight: 700; color: var(--text2);
+  cursor: pointer; transition: background .12s;
+}
+.search-chip:hover { background: var(--sidebar-hover); color: var(--text); }
+
+.topbar-right {
+  margin-left: auto; display: flex; align-items: center; gap: 10px;
+}
+.tb-icon-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--card2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text2);
+  transition: background .12s, color .12s; font-size: .9rem;
+  flex-shrink: 0; position: relative;
+}
+.tb-icon-btn:hover { background: var(--sidebar-hover); color: var(--text); }
+.tb-badge {
+  position: absolute; top: -3px; right: -3px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--red); color: #fff;
+  font-size: .55rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+.tb-robux {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 5px 12px;
+  font-size: .8rem; font-weight: 800; color: var(--text);
+  cursor: pointer;
+}
+.tb-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--card2); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; overflow: hidden;
+}
+
+/* ── LAYOUT ── */
+.app-body {
+  display: flex; flex: 1; min-height: 0;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width: 220px; flex-shrink: 0;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 16px 0;
+  position: sticky; top: 52px;
+  height: calc(100vh - 52px);
+  overflow-y: auto;
+  transition: background .3s, width .3s;
+}
+.sidebar-section { margin-bottom: 24px; }
+.sidebar-section-title {
+  font-size: .62rem; font-weight: 900;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text3); padding: 0 20px; margin-bottom: 6px;
+  font-family: var(--mono);
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px; cursor: pointer;
+  color: var(--text2); font-weight: 700; font-size: .85rem;
+  border-radius: 0; transition: background .12s, color .12s;
+  text-decoration: none; position: relative;
+}
+.sidebar-item:hover { background: var(--sidebar-hover); color: var(--text); }
+.sidebar-item.active {
+  background: var(--sidebar-active); color: var(--accent);
+}
+.sidebar-item.active::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent); border-radius: 0 2px 2px 0;
+}
+.sidebar-ico { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+.sidebar-badge {
+  margin-left: auto; background: var(--accent);
+  color: #fff; font-size: .6rem; font-weight: 900;
+  padding: 1px 6px; border-radius: 99px; font-family: var(--mono);
+}
+.sidebar-premium {
+  margin: 8px 12px 0;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  border-radius: 10px; padding: 14px;
+  cursor: pointer; transition: opacity .15s;
+}
+.sidebar-premium:hover { opacity: .9; }
+.sidebar-premium-title { font-weight: 900; font-size: .85rem; color: #fff; }
+.sidebar-premium-sub { font-size: .72rem; color: rgba(255,255,255,.7); margin-top: 2px; }
+.sidebar-premium-btn {
+  margin-top: 10px; width: 100%; padding: 7px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 7px; color: #fff; font-family: var(--font);
+  font-weight: 800; font-size: .78rem; cursor: pointer;
+}
+
+/* ── MAIN CONTENT ── */
+#main-content {
+  flex: 1; min-width: 0;
+  overflow-y: auto;
+}
+.page { display: none; }
+.page.active { display: block; }
+
+/* PAGE: HOME */
+.page-home { padding: 28px; }
+.home-hero {
+  background: linear-gradient(135deg, #0a0a2e, #0d0d45);
+  border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  position: relative; margin-bottom: 28px;
+  padding: 40px 40px 40px 320px;
+  min-height: 200px;
+}
+.home-hero-bg {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.01) 0px, rgba(255,255,255,.01) 1px, transparent 1px, transparent 40px);
+}
+.home-hero-avatar {
+  position: absolute; left: 0; bottom: 0; width: 300px;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.home-hero-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900; letter-spacing: -.5px;
+  color: #fff; position: relative; z-index: 1;
+}
+.home-hero-sub {
+  font-size: .9rem; color: rgba(255,255,255,.6);
+  margin-top: 8px; position: relative; z-index: 1;
+  font-family: var(--mono);
+}
+.home-hero-btns {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 20px; position: relative; z-index: 1;
+}
+.hh-btn {
+  padding: 10px 22px; border-radius: 8px; border: none;
+  font-family: var(--font); font-weight: 800; font-size: .88rem;
+  cursor: pointer; text-decoration: none;
+  transition: transform .12s, opacity .12s;
+}
+.hh-btn:hover { transform: translateY(-1px); opacity: .9; }
+.hh-btn-blue { background: var(--accent); color: #fff; }
+.hh-btn-white { background: #fff; color: #111; }
+.hh-btn-ghost {
+  background: rgba(255,255,255,.1); color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.section-title {
+  font-size: 1.1rem; font-weight: 900; letter-spacing: -.3px;
+  margin-bottom: 4px; color: var(--text);
+}
+.section-sub {
+  font-size: .8rem; color: var(--text3);
+  margin-bottom: 16px;
+}
+.standout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px; margin-bottom: 28px;
+}
+.standout-card {
+  border-radius: 12px; overflow: hidden;
+  cursor: pointer; position: relative;
+  transition: transform .2s, box-shadow .2s;
+  aspect-ratio: 16/9;
+}
+.standout-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+.sc-img {
+  width: 100%; height: 100%;
+  display: flex; align-items: flex-end; padding: 12px;
+}
+.sc-label {
+  font-weight: 900; font-size: .88rem; color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.8);
+}
+.sc-sub {
+  font-size: .72rem; color: rgba(255,255,255,.7);
+  text-shadow: 0 1px 4px rgba(0,0,0,.8);
+}
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px; margin-bottom: 28px;
+}
+.rec-card {
+  cursor: pointer; transition: transform .2s;
+}
+.rec-card:hover { transform: translateY(-3px); }
+.rec-thumb {
+  border-radius: 10px; overflow: hidden;
+  aspect-ratio: 1/1; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+}
+.rec-title { font-weight: 800; font-size: .82rem; color: var(--text); }
+.rec-rating {
+  font-size: .72rem; color: var(--text3);
+  display: flex; align-items: center; gap: 3px;
+  font-family: var(--mono);
+}
+
+/* PAGE: PROFILE */
+.page-profile { padding: 0; }
+.profile-banner {
+  height: 160px; position: relative;
+  background: linear-gradient(135deg, #0a0a3e 0%, #1a1a6e 50%, #2a1a5e 100%);
+  overflow: hidden;
+}
+.profile-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 30px);
+}
+.profile-banner-3d {
+  position: absolute; right: 80px; bottom: 0;
+  display: flex; align-items: flex-end;
+}
+.profile-info-row {
+  display: flex; align-items: flex-end; gap: 20px;
+  padding: 0 32px 0;
+  position: relative; z-index: 1;
+}
+.profile-avatar-big {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: var(--card); border: 4px solid var(--bg);
+  margin-top: -45px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+.profile-meta { padding: 14px 0 0; flex: 1; min-width: 0; }
+.profile-uname { font-weight: 900; font-size: 1.3rem; letter-spacing: -.3px; }
+.profile-handle { font-size: .8rem; color: var(--text3); font-family: var(--mono); margin-top: 2px; }
+.profile-connections {
+  display: flex; gap: 16px; margin-top: 10px;
+}
+.pc-item { font-size: .82rem; color: var(--text2); }
+.pc-item strong { font-weight: 900; color: var(--text); }
+.profile-actions { display: flex; gap: 8px; padding: 14px 0 0; }
+.pa-btn {
+  padding: 8px 20px; border-radius: 8px; border: none;
+  font-family: var(--font); font-weight: 800; font-size: .82rem;
+  cursor: pointer; transition: opacity .12s;
+}
+.pa-btn:hover { opacity: .85; }
+.pa-btn-primary { background: var(--accent); color: #fff; }
+.pa-btn-ghost {
+  background: var(--card2); color: var(--text);
+  border: 1px solid var(--border);
+}
+.pa-btn-dots {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--card2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text2); font-size: 1rem;
+}
+.profile-tabs {
+  display: flex; border-bottom: 2px solid var(--border);
+  padding: 0 32px; margin-top: 4px;
+}
+.profile-tab {
+  padding: 12px 20px; font-weight: 800; font-size: .88rem;
+  color: var(--text2); cursor: pointer; border-bottom: 2px solid transparent;
+  margin-bottom: -2px; transition: color .12s, border-color .12s;
+}
+.profile-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.profile-body { padding: 28px 32px; }
+.profile-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+.profile-left { display: flex; flex-direction: column; gap: 16px; }
+.profile-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+.pc-header {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  font-weight: 900; font-size: .88rem;
+}
+.pc-body { padding: 16px; }
+.wearing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.wearing-item {
+  background: var(--card2); border-radius: 8px;
+  aspect-ratio: 1; display: flex; align-items: center;
+  justify-content: center; font-size: 1.5rem; cursor: pointer;
+  border: 1px solid var(--border); transition: border-color .12s;
+}
+.wearing-item:hover { border-color: var(--accent); }
+.wearing-item-label { font-size: .62rem; color: var(--text3); margin-top: 4px; text-align: center; font-weight: 700; }
+.stat-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-row-label { font-size: .82rem; color: var(--text2); font-weight: 700; }
+.stat-row-val { font-size: .88rem; font-weight: 900; color: var(--text); font-family: var(--mono); }
+.badge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.badge-item {
+  background: var(--card2); border-radius: 10px;
+  padding: 10px 6px; text-align: center; cursor: pointer;
+  border: 1px solid var(--border); transition: border-color .15s, transform .15s;
+  position: relative;
+}
+.badge-item:hover { border-color: var(--yellow); transform: translateY(-2px); }
+.badge-item .bi-ico { font-size: 1.4rem; }
+.badge-item .bi-name { font-size: .58rem; font-weight: 800; color: var(--text3); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px; }
+.profile-right { display: flex; flex-direction: column; gap: 16px; }
+.about-section {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+}
+.about-section h3 { font-size: .9rem; font-weight: 900; margin-bottom: 12px; }
+.about-section p { font-size: .86rem; color: var(--text2); line-height: 1.75; }
+.about-section p + p { margin-top: 10px; }
+.skills-section {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+}
+.skills-section h3 { font-size: .9rem; font-weight: 900; margin-bottom: 14px; }
+.skill-bar-row { margin-bottom: 10px; }
+.skill-bar-top {
+  display: flex; justify-content: space-between;
+  margin-bottom: 5px; font-size: .82rem;
+}
+.skill-bar-top span:first-child { font-weight: 700; color: var(--text); }
+.skill-bar-top span:last-child { font-weight: 700; color: var(--text3); font-family: var(--mono); }
+.skill-track { height: 8px; background: var(--card2); border-radius: 99px; overflow: hidden; }
+.skill-fill { height: 100%; width: 0; border-radius: 99px; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
+
+/* PAGE: GAMES / PORTFOLIO */
+.page-games { padding: 28px; }
+.games-filter {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 20px; flex-wrap: wrap;
+}
+.gf-btn {
+  padding: 6px 16px; border-radius: 99px; border: 1px solid var(--border);
+  background: var(--card2); color: var(--text2);
+  font-family: var(--font); font-weight: 700; font-size: .78rem;
+  cursor: pointer; transition: background .12s, color .12s, border-color .12s;
+}
+.gf-btn:hover, .gf-btn.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.game-tile {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; cursor: pointer;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.game-tile:hover { transform: translateY(-5px); box-shadow: 0 16px 40px var(--shadow); border-color: rgba(255,255,255,.2); }
+.gt-thumb {
+  aspect-ratio: 16/9; display: flex; align-items: center;
+  justify-content: center; position: relative; overflow: hidden;
+}
+.gt-play {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .2s;
+}
+.game-tile:hover .gt-play { opacity: 1; }
+.gt-play-ico {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,.15); backdrop-filter: blur(8px);
+  border: 2px solid rgba(255,255,255,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.gt-live {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(0,0,0,.7); border-radius: 6px; padding: 3px 8px;
+  font-size: .66rem; font-weight: 800;
+  display: flex; align-items: center; gap: 5px; color: #fff;
+}
+.gt-dot { width: 6px; height: 6px; border-radius: 50%; background: #00b06f; animation: pulse 2s infinite; }
+.gt-info { padding: 12px; }
+.gt-title { font-weight: 900; font-size: .9rem; margin-bottom: 2px; }
+.gt-creator { font-size: .72rem; color: var(--text3); font-family: var(--mono); }
+.gt-meta {
+  display: flex; justify-content: space-between;
+  margin-top: 8px; font-size: .72rem;
+}
+.gt-rating { color: var(--yellow); font-weight: 800; }
+.gt-visits { color: var(--text3); font-family: var(--mono); }
+.gt-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+.gt-tag {
+  background: var(--card2); border-radius: 5px; padding: 2px 8px;
+  font-size: .64rem; font-weight: 700; color: var(--text3);
+  border: 1px solid var(--border);
+}
+
+/* PAGE: MINI GAME */
+.page-game { padding: 28px; }
+.game-shell {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+}
+.game-titlebar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--sidebar-bg);
+  border-bottom: 1px solid var(--border);
+}
+.game-titlebar-left { display: flex; align-items: center; gap: 10px; }
+.game-dots { display: flex; gap: 5px; }
+.gd { width: 10px; height: 10px; border-radius: 50%; }
+.game-titlebar-name { font-family: var(--mono); font-size: .76rem; color: var(--text3); }
+.game-hud {
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--mono); font-size: .74rem;
+}
+.hud-lbl { color: var(--text3); }
+.hud-v { color: var(--text); font-weight: 700; }
+.collect-pips { display: flex; gap: 3px; }
+.c-pip { width: 14px; height: 14px; border-radius: 3px; background: var(--card2); border: 1px solid var(--border); transition: background .3s; }
+.c-pip.on { background: var(--yellow); }
+.canvas-wrap { position: relative; width: 100%; }
+#gameCanvas { display: block; width: 100%; background: #050520; }
+.game-info-popup {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(0,0,0,.88); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px; padding: 12px 14px; max-width: 210px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s; transform: translateY(8px);
+  z-index: 10;
+}
+.game-info-popup.show { opacity: 1; transform: none; }
+.gip-title { font-weight: 900; font-size: .8rem; color: var(--yellow); margin-bottom: 4px; }
+.gip-body { font-size: .74rem; color: rgba(255,255,255,.7); line-height: 1.6; }
+.game-controls-bar {
+  padding: 10px 20px;
+  background: var(--sidebar-bg);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+}
+.ctrl-hint { display: flex; align-items: center; gap: 12px; font-size: .72rem; color: var(--text3); }
+.k { display: inline-flex; align-items: center; justify-content: center;
+  background: var(--card2); border: 1px solid var(--border); border-bottom: 3px solid rgba(0,0,0,.3);
+  border-radius: 5px; padding: 1px 8px; font-size: .68rem; font-weight: 800; color: var(--text2); font-family: var(--mono); }
+.mob-ctls { display: flex; gap: 5px; }
+.mc-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--card2); border: 1px solid var(--border); border-bottom: 3px solid rgba(0,0,0,.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text2); cursor: pointer; font-size: .9rem;
+  user-select: none; -webkit-user-select: none;
+}
+.mc-btn:active { border-bottom-width: 1px; transform: translateY(2px); }
+
+/* PAGE: CONTACT */
+.page-contact { padding: 28px; }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contact-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px;
+}
+.contact-card h3 { font-size: 1rem; font-weight: 900; margin-bottom: 4px; }
+.contact-card p { font-size: .84rem; color: var(--text2); margin-bottom: 16px; }
+.contact-link {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 13px 16px;
+  text-decoration: none; color: var(--text);
+  transition: border-color .15s, transform .15s;
+  margin-bottom: 8px; cursor: pointer;
+}
+.contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+.cl-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+.cl-info { flex: 1; }
+.cl-label { font-weight: 800; font-size: .84rem; }
+.cl-val { font-size: .74rem; color: var(--text3); font-family: var(--mono); }
+.cl-arrow { color: var(--text3); }
+.form-field { margin-bottom: 12px; }
+.form-field label { display: block; font-weight: 800; font-size: .7rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; font-family: var(--mono); }
+.form-field input, .form-field textarea, .form-field select {
+  width: 100%; background: var(--card2); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: var(--font);
+  font-size: .86rem; padding: 10px 13px; outline: none;
+  transition: border-color .14s;
+}
+.form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
+.form-field textarea { height: 90px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 12px; background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; font-family: var(--font);
+  font-weight: 800; font-size: .9rem; cursor: pointer;
+  transition: opacity .15s, transform .12s;
+}
+.form-submit:hover { opacity: .9; transform: translateY(-1px); }
+#form-msg { text-align: center; font-weight: 800; font-size: .82rem; min-height: 18px; margin-top: 10px; }
+
+/* PAGE: EXPERIENCE */
+.page-exp { padding: 28px; }
+.exp-timeline { display: flex; flex-direction: column; gap: 16px; max-width: 760px; }
+.exp-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px; display: grid;
+  grid-template-columns: 56px 1fr; gap: 16px;
+  transition: border-color .2s; cursor: default;
+}
+.exp-card:hover { border-color: rgba(255,255,255,.2); }
+.exp-ico-wrap {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: var(--card2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.exp-role { font-weight: 900; font-size: .95rem; }
+.exp-company { font-size: .78rem; color: var(--text3); font-family: var(--mono); margin-top: 2px; }
+.exp-date {
+  font-size: .7rem; font-weight: 800; color: var(--text3);
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 3px 10px; font-family: var(--mono);
+  white-space: nowrap; height: fit-content;
+}
+.exp-desc { font-size: .84rem; color: var(--text2); line-height: 1.75; margin-top: 10px; }
+.exp-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.exp-chip {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 5px; padding: 2px 9px;
+  font-size: .66rem; font-weight: 800; color: var(--text3);
+}
+
+/* PAGE: INVENTORY */
+.page-inv { padding: 28px; }
+.inv-shell {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.inv-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+  background: var(--sidebar-bg);
+}
+.inv-topbar-title { font-weight: 900; font-size: .9rem; }
+.inv-topbar-count { font-size: .75rem; color: var(--text3); font-family: var(--mono); }
+.inv-body { display: grid; grid-template-columns: 1fr 280px; }
+.inv-grid-area {
+  padding: 16px; border-right: 1px solid var(--border);
+}
+.inv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+}
+.inv-slot {
+  background: var(--card2); border: 2px solid var(--border);
+  border-radius: 10px; padding: 12px 8px;
+  text-align: center; cursor: pointer; position: relative;
+  transition: border-color .18s, transform .15s;
+  aspect-ratio: 1 / 1.1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.inv-slot:hover { border-color: rgba(255,255,255,.3); transform: translateY(-2px); }
+.inv-slot.active { border-color: #fff !important; }
+.inv-slot.equipped { border-color: var(--green) !important; }
+.inv-slot.equipped::after {
+  content: 'EQ'; position: absolute; top: 3px; right: 4px;
+  font-size: .5rem; font-weight: 900; color: var(--green); font-family: var(--mono);
+}
+.inv-ico { font-size: 1.5rem; margin-bottom: 6px; }
+.inv-name { font-size: .64rem; font-weight: 800; }
+.inv-lvl { font-size: .56rem; color: var(--text3); font-family: var(--mono); margin-top: 1px; }
+.inv-rarity-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; border-radius: 0 0 8px 8px; }
+.r-common { background: #666; }
+.r-rare { background: #3b82f6; }
+.r-epic { background: #a855f7; }
+.r-legend { background: linear-gradient(90deg, #fbbf24, #f97316); }
+.inv-detail-area { padding: 20px; }
+.inv-detail-empty { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text3); font-size: .84rem; font-weight: 700; flex-direction: column; gap: 8px; text-align: center; }
+.inv-detail-content { display: none; }
+.inv-detail-content.show { display: block; }
+.inv-detail-ico { font-size: 3rem; margin-bottom: 10px; }
+.inv-detail-name { font-weight: 900; font-size: 1.1rem; }
+.inv-detail-sub { font-size: .74rem; color: var(--text3); font-family: var(--mono); margin-top: 2px; margin-bottom: 14px; }
+.inv-detail-desc { font-size: .82rem; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position: relative; width: 44px; height: 24px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 99px; cursor: pointer; flex-shrink: 0;
+  transition: background .3s;
+}
+.theme-toggle::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--text); transition: transform .3s, background .3s;
+}
+[data-theme="light"] .theme-toggle::after { transform: translateX(20px); }
+.theme-toggle-label { font-size: .72rem; color: var(--text3); font-weight: 700; }
+
+/* TOAST */
+#toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 18px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: .82rem; font-weight: 800; z-index: 9000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s; white-space: nowrap;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* PULSE */
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  #sidebar { display: none; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .inv-body { grid-template-columns: 1fr; }
+  .inv-detail-area { display: none; }
+  .home-hero { padding: 28px; }
+  .home-hero-avatar { display: none; }
+  .profile-banner-3d { display: none; }
+}
+@media (max-width: 640px) {
+  .topbar-nav { display: none; }
+  .page-home, .page-profile, .page-games, .page-game, .page-contact, .page-exp, .page-inv { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     LOGIN SCREEN
+═══════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-bg" id="loginBg"></div>
+  <div class="login-overlay"></div>
+  <div class="login-box">
+    <div class="login-logo">
+      <svg width="32" height="22" viewBox="0 0 50 34" fill="none">
+        <rect x="0" y="0" width="50" height="34" rx="4" fill="#fff"/>
+        <rect x="5" y="5" width="18" height="10" rx="2" fill="#111"/>
+        <rect x="27" y="5" width="18" height="10" rx="2" fill="#111"/>
+        <rect x="5" y="19" width="18" height="10" rx="2" fill="#111"/>
+        <rect x="27" y="19" width="18" height="10" rx="2" fill="#111"/>
+      </svg>
+      <span class="login-logo-text">AdrianP_Dev</span>
+    </div>
+    <div class="login-subtitle">// Game Designer · World Builder · Roblox Dev</div>
+    <div class="login-title">Enter Adrian's Portfolio</div>
+    <div class="login-field">
+      <input type="text" id="login-user" placeholder="Username / Email / Guest" value=""/>
+    </div>
+    <div class="login-field">
+      <input type="password" id="login-pass" placeholder="Password" value=""/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Log In</button>
+    <button class="login-enter-btn" onclick="enterAsGuest()">▶&nbsp;&nbsp;Enter Portfolio as Guest</button>
+    <div class="login-divider"><span>or</span></div>
+    <div class="login-alt-btns">
+      <button class="login-alt-btn" onclick="enterAsGuest()">📧 Email Me a One-Time Code</button>
+      <button class="login-alt-btn" onclick="enterAsGuest()">⚡ Quick Sign-in</button>
+    </div>
+    <p class="login-no-acc">Don't have an account? <a href="#" onclick="enterAsGuest();return false;">Sign Up</a></p>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"><span id="toast-ico">✓</span>&nbsp;<span id="toast-msg"></span></div>
+
+<!-- ═══════════════════════════════════════
+     MAIN APP
+═══════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <a class="topbar-logo" onclick="showPage('home')">
+      <svg width="28" height="20" viewBox="0 0 50 34" fill="none">
+        <rect x="0" y="0" width="50" height="34" rx="3" fill="var(--accent)"/>
+        <rect x="4" y="4" width="16" height="9" rx="2" fill="#fff"/>
+        <rect x="24" y="4" width="16" height="9" rx="2" fill="#fff"/>
+        <rect x="4" y="17" width="16" height="9" rx="2" fill="#fff"/>
+        <rect x="24" y="17" width="16" height="9" rx="2" fill="#fff"/>
+      </svg>
+      AdrianP&shy;Portfolio
+    </a>
+    <ul class="topbar-nav">
+      <li><a onclick="showPage('home')">Charts</a></li>
+      <li><a onclick="showPage('games')">Portfolio</a></li>
+      <li><a onclick="showPage('game')">Play</a></li>
+      <li><a onclick="showPage('contact')">Hire Me</a></li>
+    </ul>
+
+    <div class="topbar-search">
+      <span class="topbar-search-ico">🔍</span>
+      <input type="text" placeholder="Search" id="searchInput"
+        onfocus="document.getElementById('searchDD').classList.add('show')"
+        onblur="setTimeout(()=>document.getElementById('searchDD').classList.remove('show'),200)"/>
+      <div class="topbar-search-dropdown" id="searchDD">
+        <div class="search-try">Try searching for</div>
+        <div class="search-chips">
+          <span class="search-chip" onclick="showPage('game')">Mini Game</span>
+          <span class="search-chip" onclick="showPage('profile')">Profile</span>
+          <span class="search-chip" onclick="showPage('games')">Castle Siege</span>
+          <span class="search-chip" onclick="showPage('exp')">Experience</span>
+          <span class="search-chip" onclick="showPage('contact')">Contact</span>
+          <span class="search-chip" onclick="showPage('inv')">Inventory</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="theme-toggle-label" id="theme-lbl">🌙</span>
+        <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Light/Dark mode"></div>
+      </div>
+      <div class="tb-icon-btn" onclick="showToast('🔔','No new notifications!')">
+        🔔
+        <span class="tb-badge">1</span>
+      </div>
+      <div class="tb-robux" onclick="showToast('💰','Adrian has 50,000+ portfolio visits!')">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="9" stroke="var(--green)" stroke-width="2"/>
+          <path d="M7 10h6M10 7v6" stroke="var(--green)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        50K+ Visits
+      </div>
+      <div class="tb-avatar" onclick="showPage('profile')">
+        <svg viewBox="0 0 36 42" fill="none" width="34" height="34">
+          <rect x="7" y="4" width="22" height="16" rx="3" fill="#f0c080"/>
+          <rect x="10" y="8" width="5" height="5" rx="1" fill="#111"/>
+          <rect x="21" y="8" width="5" height="5" rx="1" fill="#111"/>
+          <rect x="5" y="21" width="26" height="14" rx="3" fill="#2a2a2a"/>
+          <rect x="0" y="22" width="5" height="10" rx="2" fill="#2a2a2a"/>
+          <rect x="31" y="22" width="5" height="10" rx="2" fill="#2a2a2a"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-body">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Navigate</div>
+        <div class="sidebar-item active" id="nav-home" onclick="showPage('home')">
+          <span class="sidebar-ico">🏠</span> Home
+        </div>
+        <div class="sidebar-item" id="nav-profile" onclick="showPage('profile')">
+          <span class="sidebar-ico">👤</span> Profile
+        </div>
+        <div class="sidebar-item" id="nav-games" onclick="showPage('games')">
+          <span class="sidebar-ico">🎮</span> My Games
+        </div>
+        <div class="sidebar-item" id="nav-game" onclick="showPage('game')">
+          <span class="sidebar-ico">▶️</span> Mini Game
+          <span class="sidebar-badge">NEW</span>
+        </div>
+        <div class="sidebar-item" id="nav-exp" onclick="showPage('exp')">
+          <span class="sidebar-ico">📋</span> Experience
+        </div>
+        <div class="sidebar-item" id="nav-inv" onclick="showPage('inv')">
+          <span class="sidebar-ico">🎒</span> Inventory
+        </div>
+        <div class="sidebar-item" id="nav-contact" onclick="showPage('contact')">
+          <span class="sidebar-ico">✉️</span> Contact Me
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Social</div>
+        <div class="sidebar-item" onclick="showToast('🔗','Opening Roblox Profile...')"><span class="sidebar-ico">🎯</span> Roblox Profile</div>
+        <div class="sidebar-item" onclick="showToast('🔗','Opening GitHub...')"><span class="sidebar-ico">🐙</span> GitHub</div>
+        <div class="sidebar-item" onclick="showToast('🔗','Opening LinkedIn...')"><span class="sidebar-ico">💼</span> LinkedIn</div>
+        <div class="sidebar-item" onclick="showPage('contact')"><span class="sidebar-ico">📧</span> Messages <span class="sidebar-badge">1</span></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-premium" onclick="showPage('contact')">
+          <div class="sidebar-premium-title">🚀 Hire Adrian</div>
+          <div class="sidebar-premium-sub">Open to studio roles & freelance</div>
+          <button class="sidebar-premium-btn">Get In Touch →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+
+      <!-- HOME PAGE -->
+      <div class="page page-home active" id="page-home">
+        <div class="home-hero reveal">
+          <div class="home-hero-bg"></div>
+          <div class="home-hero-avatar">
+            <svg viewBox="0 0 120 200" fill="none" width="220" height="220">
+              <!-- Shadow -->
+              <ellipse cx="60" cy="195" rx="40" ry="5" fill="rgba(0,0,0,.3)"/>
+              <!-- Legs -->
+              <rect x="30" y="130" width="22" height="50" rx="4" fill="#1a1a2e"/>
+              <rect x="68" y="130" width="22" height="50" rx="4" fill="#1a1a2e"/>
+              <!-- Shoes -->
+              <rect x="27" y="172" width="26" height="12" rx="4" fill="#111"/>
+              <rect x="67" y="172" width="26" height="12" rx="4" fill="#111"/>
+              <!-- Body -->
+              <rect x="22" y="75" width="76" height="62" rx="6" fill="#0066ff"/>
+              <!-- Shirt details -->
+              <rect x="35" y="85" width="50" height="6" rx="3" fill="rgba(255,255,255,.2)"/>
+              <rect x="35" y="97" width="36" height="4" rx="2" fill="rgba(255,255,255,.15)"/>
+              <!-- Arms -->
+              <rect x="4" y="76" width="18" height="50" rx="5" fill="#0066ff"/>
+              <rect x="98" y="76" width="18" height="50" rx="5" fill="#0066ff"/>
+              <!-- Hands -->
+              <rect x="4" y="120" width="18" height="16" rx="5" fill="#f0c080"/>
+              <rect x="98" y="120" width="18" height="16" rx="5" fill="#f0c080"/>
+              <!-- Neck -->
+              <rect x="48" y="65" width="24" height="14" rx="3" fill="#f0c080"/>
+              <!-- Head -->
+              <rect x="18" y="18" width="84" height="56" rx="10" fill="#f0c080"/>
+              <!-- Hair -->
+              <rect x="18" y="18" width="84" height="20" rx="10" fill="#8B4513"/>
+              <rect x="18" y="26" width="84" height="14" rx="0" fill="#8B4513"/>
+              <!-- Eyes -->
+              <rect x="30" y="38" width="20" height="18" rx="4" fill="#fff"/>
+              <rect x="70" y="38" width="20" height="18" rx="4" fill="#fff"/>
+              <rect x="36" y="42" width="10" height="10" rx="2" fill="#1a1a2e"/>
+              <rect x="76" y="42" width="10" height="10" rx="2" fill="#1a1a2e"/>
+              <!-- Pupils -->
+              <rect x="39" y="45" width="4" height="4" rx="1" fill="#fff"/>
+              <rect x="79" y="45" width="4" height="4" rx="1" fill="#fff"/>
+              <!-- Smile -->
+              <path d="M42 64 Q60 76 78 64" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="home-hero-title">Hi, I'm Adrian Peterson<br/>Game Designer & Roblox Dev</div>
+          <div class="home-hero-sub">// 12+ games · 50K+ visits · 3 years experience</div>
+          <div class="home-hero-btns">
+            <button class="hh-btn hh-btn-blue" onclick="showPage('profile')">View Profile</button>
+            <button class="hh-btn hh-btn-white" onclick="showPage('game')">▶ Play Mini Game</button>
+            <button class="hh-btn hh-btn-ghost" onclick="showPage('contact')">Hire Me</button>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-title">Standout Games</div>
+          <div class="section-sub">Curated games shaping what's next for AdrianP_Dev</div>
+          <div class="standout-grid">
+            <div class="standout-card" onclick="showPage('games')">
+              <div class="sc-img" style="background:linear-gradient(135deg,#0e1628,#1a2d52,#2a4080);">
+                <div><div class="sc-label">Castle Siege Wars</div><div class="sc-sub">Conquer the kingdom</div></div>
+              </div>
+            </div>
+            <div class="standout-card" onclick="showPage('games')">
+              <div class="sc-img" style="background:linear-gradient(135deg,#081408,#0f2a10,#1a4a1a);">
+                <div><div class="sc-label">Jungle Temple Run</div><div class="sc-sub">Ancient mysteries await</div></div>
+              </div>
+            </div>
+            <div class="standout-card" onclick="showPage('games')">
+              <div class="sc-img" style="background:linear-gradient(135deg,#08080f,#160d2a,#2a1a4a);">
+                <div><div class="sc-label">Galactic Defenders</div><div class="sc-sub">Protect the galaxy</div></div>
+              </div>
+            </div>
+            <div class="standout-card" onclick="showPage('games')">
+              <div class="sc-img" style="background:linear-gradient(135deg,#1a0808,#3a1010,#5a1a1a);">
+                <div><div class="sc-label">Tycoon Metropolis</div><div class="sc-sub">Build your empire</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-title">Recommended For You</div>
+          <div class="section-sub">Based on your interest in game design</div>
+          <div class="rec-grid">
+            <div class="rec-card" onclick="showPage('games')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a2d52,#0e1628);">🏰</div>
+              <div class="rec-title">Castle Siege Wars</div>
+              <div class="rec-rating">👍 94%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('game')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#050520,#0d0d2e);">🎮</div>
+              <div class="rec-title">Portfolio Runner</div>
+              <div class="rec-rating">👍 100%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('games')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#0f2a10,#081408);">🌿</div>
+              <div class="rec-title">Jungle Temple Run</div>
+              <div class="rec-rating">👍 91%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('games')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#160d2a,#08080f);">🚀</div>
+              <div class="rec-title">Galactic Defenders</div>
+              <div class="rec-rating">👍 97%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('exp')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a0808,#3a1010);">🏙️</div>
+              <div class="rec-title">Tycoon Metropolis</div>
+              <div class="rec-rating">👍 89%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('contact')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#0a1a0a,#1a3a1a);">⚔️</div>
+              <div class="rec-title">Hire Adrian</div>
+              <div class="rec-rating">👍 Open Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE PAGE -->
+      <div class="page page-profile" id="page-profile">
+        <div class="profile-banner">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 30px)"></div>
+          <div class="profile-banner-3d">
+            <svg viewBox="0 0 80 120" fill="none" width="160" height="160">
+              <rect x="20" y="5" width="40" height="34" rx="5" fill="#f0c080"/>
+              <rect x="26" y="13" width="10" height="10" rx="2" fill="#111"/>
+              <rect x="44" y="13" width="10" height="10" rx="2" fill="#111"/>
+              <rect x="29" y="15" width="4" height="4" rx="1" fill="#fff"/>
+              <rect x="47" y="15" width="4" height="4" rx="1" fill="#fff"/>
+              <path d="M28 34 Q40 42 52 34" stroke="#111" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <rect x="14" y="40" width="52" height="44" rx="5" fill="#0066ff"/>
+              <rect x="2" y="42" width="12" height="32" rx="4" fill="#0066ff"/>
+              <rect x="66" y="42" width="12" height="32" rx="4" fill="#0066ff"/>
+              <rect x="2" y="68" width="12" height="12" rx="3" fill="#f0c080"/>
+              <rect x="66" y="68" width="12" height="12" rx="3" fill="#f0c080"/>
+              <rect x="14" y="85" width="22" height="32" rx="4" fill="#1a1a2e"/>
+              <rect x="44" y="85" width="22" height="32" rx="4" fill="#1a1a2e"/>
+              <rect x="11" y="110" width="28" height="9" rx="3" fill="#111"/>
+              <rect x="41" y="110" width="28" height="9" rx="3" fill="#111"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-info-row">
+          <div class="profile-avatar-big">
+            <svg viewBox="0 0 72 84" fill="none" width="82" height="82">
+              <rect x="14" y="7" width="44" height="32" rx="5" fill="#f0c080"/>
+              <rect x="21" y="16" width="10" height="10" rx="2" fill="#1a1a2e"/>
+              <rect x="41" y="16" width="10" height="10" rx="2" fill="#1a1a2e"/>
+              <rect x="24" y="18" width="4" height="4" rx="1" fill="#fff"/>
+              <rect x="44" y="18" width="4" height="4" rx="1" fill="#fff"/>
+              <path d="M26 33 Q36 40 46 33" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <rect x="10" y="40" width="52" height="28" rx="5" fill="#0066ff"/>
+              <rect x="1" y="41" width="10" height="18" rx="4" fill="#0066ff"/>
+              <rect x="61" y="41" width="10" height="18" rx="4" fill="#0066ff"/>
+              <rect x="1" y="57" width="10" height="10" rx="3" fill="#f0c080"/>
+              <rect x="61" y="57" width="10" height="10" rx="3" fill="#f0c080"/>
+              <rect x="10" y="68" width="22" height="16" rx="3" fill="#1a1a2e"/>
+              <rect x="40" y="68" width="22" height="16" rx="3" fill="#1a1a2e"/>
+            </svg>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-uname">Adrian Peterson</div>
+            <div class="profile-handle">@AdrianP_Dev</div>
+            <div class="profile-connections">
+              <span class="pc-item"><strong>0</strong> Connections</span>
+              <span class="pc-item"><strong>247</strong> Followers</span>
+              <span class="pc-item"><strong>18</strong> Following</span>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button class="pa-btn pa-btn-primary" onclick="showPage('contact')">Message</button>
+            <button class="pa-btn pa-btn-ghost" onclick="showToast('✏️','Edit profile coming soon!')">Edit Profile</button>
+            <div class="pa-btn-dots" onclick="showToast('⚙️','Settings coming soon!')">···</div>
+          </div>
+        </div>
+        <div class="profile-tabs">
+          <div class="profile-tab active">About</div>
+          <div class="profile-tab" onclick="showPage('games')">Creations</div>
+          <div class="profile-tab" onclick="showPage('inv')">Inventory</div>
+        </div>
+        <div class="profile-body">
+          <div class="profile-grid">
+            <div class="profile-left">
+              <div class="profile-card">
+                <div class="pc-header">📊 Stats</div>
+                <div class="pc-body">
+                  <div class="stat-row"><span class="stat-row-label">Birthday</span><span class="stat-row-val">Jun 19, 2009</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Member Since</span><span class="stat-row-val">2022</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Games Built</span><span class="stat-row-val">12+</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Total Visits</span><span class="stat-row-val">50K+</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Avg Rating</span><span class="stat-row-val">4.8 ⭐</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Status</span><span class="stat-row-val" style="color:var(--green)">● Open to Work</span></div>
+                  <div class="stat-row"><span class="stat-row-label">Location</span><span class="stat-row-val">Cleveland, OH</span></div>
+                </div>
+              </div>
+              <div class="profile-card">
+                <div class="pc-header">👕 Currently Wearing</div>
+                <div class="pc-body">
+                  <div class="wearing-grid">
+                    <div>
+                      <div class="wearing-item" title="Dev Shirt">👕</div>
+                      <div class="wearing-item-label">Dev Shirt</div>
+                    </div>
+                    <div>
+                      <div class="wearing-item" title="Coder Cap">🎓</div>
+                      <div class="wearing-item-label">Dev Cap</div>
+                    </div>
+                    <div>
+                      <div class="wearing-item" title="Game Gear">🎮</div>
+                      <div class="wearing-item-label">Game Gear</div>
+                    </div>
+                    <div>
+                      <div class="wearing-item" title="Builder Pack">🎒</div>
+                      <div class="wearing-item-label">Builder Pack</div>
+                    </div>
+                    <div>
+                      <div class="wearing-item" title="Script Shades">😎</div>
+                      <div class="wearing-item-label">Script Shades</div>
+                    </div>
+                    <div>
+                      <div class="wearing-item" title="Standard Head">🗿</div>
+                      <div class="wearing-item-label">Head</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-card">
+                <div class="pc-header">🏅 Badges</div>
+                <div class="pc-body">
+                  <div class="badge-grid">
+                    <div class="badge-item" onclick="showToast('🏆','Top Creator — 50K+ visits across all games!')">
+                      <div class="bi-ico">🏆</div><div class="bi-name">Top Creator</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('⚡','Scripter — Expert Luau developer!')">
+                      <div class="bi-ico">⚡</div><div class="bi-name">Scripter</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('🎨','Designer — Expert level designer!')">
+                      <div class="bi-ico">🎨</div><div class="bi-name">Designer</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('🌍','Builder — World building master!')">
+                      <div class="bi-ico">🌍</div><div class="bi-name">Builder</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('🎓','IT Graduate 2025!')">
+                      <div class="bi-ico">🎓</div><div class="bi-name">Graduate</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('🤝','Team Lead — Led 4-person dev team!')">
+                      <div class="bi-ico">🤝</div><div class="bi-name">Team Lead</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('💡','Innovator — Built matchmaking backend!')">
+                      <div class="bi-ico">💡</div><div class="bi-name">Innovator</div>
+                    </div>
+                    <div class="badge-item" onclick="showToast('🚀','Launcher — 12+ shipped titles!')">
+                      <div class="bi-ico">🚀</div><div class="bi-name">Launcher</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="profile-right">
+              <div class="about-section reveal">
+                <h3>About Me</h3>
+                <p>I'm a passionate game designer with a deep love for interactive world-building. My journey started in Roblox Studio at age 14, scripting mini-games for friends — and evolved into a serious professional pursuit of game design craft.</p>
+                <p>I specialize in creating engaging gameplay loops, intuitive level design, and polished experiences that keep players coming back. From solo projects to collaborating with teams, I bring both creative vision and technical execution to every build.</p>
+                <p>Currently looking for opportunities to join a studio or take on freelance contracts where I can contribute to larger-scale projects while growing my independent portfolio.</p>
+                <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="pa-btn pa-btn-primary" onclick="showPage('contact')">Contact Me</button>
+                  <button class="pa-btn pa-btn-ghost" onclick="showPage('games')">View Games</button>
+                </div>
+              </div>
+              <div class="skills-section reveal" id="skills-section">
+                <h3>🎒 Skills & Abilities</h3>
+                <div id="skill-bars"></div>
+              </div>
+              <div class="about-section reveal">
+                <h3>🛠️ Tools & Tech</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Roblox Studio</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Luau / Lua</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Blender 3D</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Figma</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Aseprite</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Git / GitHub</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">VS Code</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Trello</span>
+                  <span style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:.78rem;font-weight:700;">Discord</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAMES PAGE -->
+      <div class="page page-games" id="page-games">
+        <div class="section-title">My Games Portfolio</div>
+        <div class="section-sub" style="margin-bottom:16px;">12+ shipped titles — solo and with teams</div>
+        <div class="games-filter">
+          <button class="gf-btn active" onclick="filterGames(this,'all')">All ▼</button>
+          <button class="gf-btn" onclick="filterGames(this,'pvp')">PvP</button>
+          <button class="gf-btn" onclick="filterGames(this,'adventure')">Adventure</button>
+          <button class="gf-btn" onclick="filterGames(this,'strategy')">Strategy</button>
+          <button class="gf-btn" onclick="filterGames(this,'tycoon')">Tycoon</button>
+          <button class="gf-btn" onclick="filterGames(this,'sort')">Sort by Relevance ▼</button>
+          <button class="gf-btn" onclick="filterGames(this,'price')">Any Price ▼</button>
+        </div>
+        <div class="games-grid" id="games-grid"></div>
+      </div>
+
+      <!-- MINI GAME PAGE -->
+      <div class="page page-game" id="page-game">
+        <div class="section-title" style="margin-bottom:4px;">🎮 Portfolio Runner</div>
+        <div class="section-sub" style="margin-bottom:16px;">Run, jump & collect ⭐ to unlock resume info · Made with Roblox Studio vibes</div>
+        <div class="game-shell">
+          <div class="game-titlebar">
+            <div class="game-titlebar-left">
+              <div class="game-dots">
+                <div class="gd" style="background:#ef4444"></div>
+                <div class="gd" style="background:#fbbf24"></div>
+                <div class="gd" style="background:#22c55e"></div>
+              </div>
+              <span class="game-titlebar-name">PortfolioRunner_v1.rbxl — Roblox Studio</span>
+            </div>
+            <div class="game-hud">
+              <span class="hud-lbl">SCORE</span><span class="hud-v" id="g-score">0</span>
+              <span class="hud-lbl">COLLECT</span>
+              <div class="collect-pips">
+                <div class="c-pip" id="p0"></div><div class="c-pip" id="p1"></div>
+                <div class="c-pip" id="p2"></div><div class="c-pip" id="p3"></div>
+                <div class="c-pip" id="p4"></div>
+              </div>
+              <span class="hud-lbl">LIVES</span><span class="hud-v" id="g-lives">♥♥♥</span>
+            </div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="gameCanvas"></canvas>
+            <div class="game-info-popup" id="gip">
+              <div class="gip-title" id="gip-title"></div>
+              <div class="gip-body" id="gip-body"></div>
+            </div>
+          </div>
+          <div class="game-controls-bar">
+            <div class="ctrl-hint">
+              <span><span class="k">← →</span> Move</span>
+              <span><span class="k">Space</span> / <span class="k">↑</span> Jump</span>
+              <span>Collect ⭐ to reveal resume info</span>
+            </div>
+            <div class="mob-ctls">
+              <button class="mc-btn" id="mb-l">←</button>
+              <button class="mc-btn" id="mb-j">↑</button>
+              <button class="mc-btn" id="mb-r">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE PAGE -->
+      <div class="page page-exp" id="page-exp">
+        <div class="section-title">History Log</div>
+        <div class="section-sub" style="margin-bottom:24px;">My career journey as a game designer</div>
+        <div class="exp-timeline">
+          <div class="exp-card reveal">
+            <div class="exp-ico-wrap">🎮</div>
+            <div>
+              <div class="exp-header">
+                <div><div class="exp-role">Freelance Game Designer</div><div class="exp-company">Independent · Roblox Platform</div></div>
+                <span class="exp-date">2022 — Present</span>
+              </div>
+              <p class="exp-desc">Designed and shipped 12+ Roblox games with a combined 50,000+ visits. Owned the full pipeline: game loops, level design, Luau scripting, UI, monetization strategy, and community management.</p>
+              <div class="exp-chips">
+                <span class="exp-chip">Game Design</span><span class="exp-chip">Luau</span>
+                <span class="exp-chip">Level Design</span><span class="exp-chip">Monetization</span><span class="exp-chip">50K+ Visits</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-card reveal" style="transition-delay:.08s">
+            <div class="exp-ico-wrap">🏢</div>
+            <div>
+              <div class="exp-header">
+                <div><div class="exp-role">Lead Game Designer</div><div class="exp-company">PixelForge Studios · Contract</div></div>
+                <span class="exp-date">2023 — 2024</span>
+              </div>
+              <p class="exp-desc">Led a 4-person team creating a tycoon-style Roblox game. Authored GDDs, built prototype levels, balanced economies, and coordinated with scripters and artists to ship a title peaking at 8,000 concurrent users.</p>
+              <div class="exp-chips">
+                <span class="exp-chip">Team Lead</span><span class="exp-chip">GDD Authoring</span>
+                <span class="exp-chip">Game Economy</span><span class="exp-chip">8K CCU Peak</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-card reveal" style="transition-delay:.16s">
+            <div class="exp-ico-wrap">🎓</div>
+            <div>
+              <div class="exp-header">
+                <div><div class="exp-role">IT Graduate — Game Design Focus</div><div class="exp-company">Information Technology Program</div></div>
+                <span class="exp-date">2021 — 2025</span>
+              </div>
+              <p class="exp-desc">Completed a 4-year IT degree with electives in game development, UI/UX, and software engineering. Capstone: a cross-platform Roblox game prototype with a custom matchmaking back-end.</p>
+              <div class="exp-chips">
+                <span class="exp-chip">IT Degree</span><span class="exp-chip">UI/UX</span>
+                <span class="exp-chip">Software Engineering</span><span class="exp-chip">Capstone Project</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INVENTORY PAGE -->
+      <div class="page page-inv" id="page-inv">
+        <div class="section-title" style="margin-bottom:16px;">🎒 Inventory — Skills Backpack</div>
+        <div class="inv-shell">
+          <div class="inv-topbar">
+            <span class="inv-topbar-title">Adrian's Backpack</span>
+            <span class="inv-topbar-count" id="inv-count">8 / 8 slots</span>
+          </div>
+          <div class="inv-body">
+            <div class="inv-grid-area">
+              <div class="inv-grid" id="inv-grid"></div>
+            </div>
+            <div class="inv-detail-area">
+              <div class="inv-detail-empty" id="inv-empty">
+                <span style="font-size:2rem">🎒</span>
+                <span>Click a skill to inspect</span>
+              </div>
+              <div class="inv-detail-content" id="inv-detail">
+                <div style="text-align:center;margin-bottom:16px;">
+                  <div class="inv-detail-ico" id="idd-ico"></div>
+                  <div class="inv-detail-name" id="idd-name"></div>
+                  <div class="inv-detail-sub" id="idd-sub"></div>
+                </div>
+                <div class="inv-detail-desc" id="idd-desc"></div>
+                <div id="idd-bars"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT PAGE -->
+      <div class="page page-contact" id="page-contact">
+        <div class="section-title">Contact Me</div>
+        <div class="section-sub" style="margin-bottom:20px;">Open to freelance, studio roles, and team collaborations</div>
+        <div class="contact-layout">
+          <div>
+            <div class="contact-card" style="margin-bottom:16px;">
+              <h3>Get In Touch</h3>
+              <p>I'm always open to new projects, collaborations, or just a chat about game design.</p>
+              <div class="contact-link" onclick="showToast('📧','Email: adrian@example.com')">
+                <div class="cl-icon">📧</div>
+                <div class="cl-info"><div class="cl-label">Email</div><div class="cl-val">adrian@example.com</div></div>
+                <span class="cl-arrow">→</span>
+              </div>
+              <div class="contact-link" onclick="showToast('🎮','Opening Roblox profile...')">
+                <div class="cl-icon">🎮</div>
+                <div class="cl-info"><div class="cl-label">Roblox</div><div class="cl-val">@AdrianP_Dev</div></div>
+                <span class="cl-arrow">→</span>
+              </div>
+              <div class="contact-link" onclick="showToast('💼','Opening LinkedIn...')">
+                <div class="cl-icon">💼</div>
+                <div class="cl-info"><div class="cl-label">LinkedIn</div><div class="cl-val">linkedin.com/in/adrianpdev</div></div>
+                <span class="cl-arrow">→</span>
+              </div>
+              <div class="contact-link" onclick="showToast('🐙','Opening GitHub...')">
+                <div class="cl-icon">🐙</div>
+                <div class="cl-info"><div class="cl-label">GitHub</div><div class="cl-val">github.com/adrianpdev</div></div>
+                <span class="cl-arrow">→</span>
+              </div>
+              <div class="contact-link" onclick="showToast('🎵','Opening Discord...')">
+                <div class="cl-icon">🎵</div>
+                <div class="cl-info"><div class="cl-label">Discord</div><div class="cl-val">adrianpdev#0001</div></div>
+                <span class="cl-arrow">→</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h3>Send a Message</h3>
+            <p>Fill out the form and I'll get back to you within 24 hours.</p>
+            <div class="form-field"><label>Name</label><input id="fn" type="text" placeholder="Your name"/></div>
+            <div class="form-field"><label>Email</label><input id="fe" type="email" placeholder="your@email.com"/></div>
+            <div class="form-field">
+              <label>Type</label>
+              <select id="ftype">
+                <option>Freelance Project</option>
+                <option>Studio Role</option>
+                <option>Collaboration</option>
+                <option>Just Saying Hi</option>
+              </select>
+            </div>
+            <div class="form-field"><label>Message</label><textarea id="fm" placeholder="Tell me about your project or opportunity..."></textarea></div>
+            <button class="form-submit" onclick="sendMsg()">Send Message →</button>
+            <div id="form-msg"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div><!-- /app-body -->
+</div><!-- /app -->
+
+<script>
+// ════════════════════════════════════════
+// LOGIN
+// ════════════════════════════════════════
+(function buildLoginBg() {
+  const bg = document.getElementById('loginBg');
+  const games = [
+    'DOORS','ADOPT ME!','JAILBREAK','BROOKHAVEN','BLOX FRUITS',
+    'PET SIM','CASTLE SIEGE','GALAXY','TYCOON','OBBY KING',
+    'JUNGLE RUN','TOWER DEF','FIGHT SIM','RACING','HORROR MAP',
+    'ROLEPLAY','BATTLE ROYALE','SWORD FIGHT'
+  ];
+  const colors = [
+    ['#1a0a2e','#4a1a6e'],['#0a1a2e','#1a4a8e'],['#0a2e0a','#1a7a1a'],
+    ['#2e1a0a','#8e4a1a'],['#2e0a0a','#8e1a1a'],['#0a2e2e','#1a7a7a'],
+    ['#2e2e0a','#8e8e1a'],['#1a0a2e','#5a1a8e'],['#0a1a2e','#2a5aae'],
+    ['#0a2e1a','#1a8e5a'],['#2e0a1a','#8e1a5a'],['#1a2e0a','#5a8e1a'],
+    ['#0a0a2e','#1a1a9e'],['#2e1a1a','#9e4a4a'],['#0a2e2e','#2a9e9e'],
+    ['#2e0a2e','#9e1a9e'],['#1a2e2e','#4a9e9e'],['#2e2e1a','#9e9e4a']
+  ];
+  games.forEach((g,i) => {
+    const tile = document.createElement('div');
+    tile.className = 'login-bg-tile';
+    const [c1,c2] = colors[i % colors.length];
+    tile.style.background = `linear-gradient(135deg,${c1},${c2})`;
+    tile.style.display = 'flex';
+    tile.style.alignItems = 'flex-end';
+    tile.style.padding = '10px';
+    tile.innerHTML = `<span style="font-weight:900;font-size:.72rem;color:rgba(255,255,255,.7);font-family:'Nunito',sans-serif;">${g}</span>`;
+    bg.appendChild(tile);
+  });
+})();
+
+function doLogin() {
+  const u = document.getElementById('login-user').value.trim();
+  enterAsGuest(u || 'Guest');
+}
+
+function enterAsGuest(name) {
+  const ls = document.getElementById('login-screen');
+  ls.style.transition = 'opacity .5s, transform .5s';
+  ls.style.opacity = '0';
+  ls.style.transform = 'scale(.97)';
+  setTimeout(() => {
+    ls.style.display = 'none';
+    document.getElementById('app').classList.add('active');
+    initApp();
+    showToast('✅', `Welcome to Adrian's Portfolio!`);
+  }, 500);
+}
+
+// ════════════════════════════════════════
+// THEME
+// ════════════════════════════════════════
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-lbl').textContent = isDark ? '☀️' : '🌙';
+}
+
+// ════════════════════════════════════════
+// PAGE NAVIGATION
+// ════════════════════════════════════════
+const pages = ['home','profile','games','game','exp','inv','contact'];
+function showPage(id) {
+  pages.forEach(p => {
+    document.getElementById('page-'+p).classList.toggle('active', p === id);
+    const nav = document.getElementById('nav-'+p);
+    if (nav) nav.classList.toggle('active', p === id);
+  });
+  document.getElementById('main-content').scrollTop = 0;
+  if (id === 'profile') animateSkillBars();
+  if (id === 'game') initGame();
+  if (id === 'inv') buildInventory();
+  if (id === 'games') buildGames();
+  // reveal
+  setTimeout(() => {
+    document.querySelectorAll('#page-'+id+' .reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+}
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+function initApp() {
+  buildGames();
+  buildInventory();
+  buildSkillBars();
+  setTimeout(() => {
+    document.querySelectorAll('#page-home .reveal').forEach(el => el.classList.add('visible'));
+  }, 200);
+}
+
+// ════════════════════════════════════════
+// SKILL BARS
+// ════════════════════════════════════════
+const skillsData = [
+  { name: 'Roblox Studio', val: 95, color: '#fbbf24' },
+  { name: 'Luau Scripting', val: 82, color: '#a855f7' },
+  { name: 'Level Design', val: 93, color: '#0066ff' },
+  { name: 'Game Systems', val: 85, color: '#22c55e' },
+  { name: 'UI / UX Design', val: 76, color: '#f97316' },
+  { name: 'Blender 3D', val: 65, color: '#3b82f6' },
+  { name: 'GDD Writing', val: 90, color: '#ec4899' },
+  { name: 'Game Economy', val: 80, color: '#14b8a6' },
+];
+function buildSkillBars() {
+  const el = document.getElementById('skill-bars');
+  if (!el) return;
+  el.innerHTML = skillsData.map(s => `
+    <div class="skill-bar-row">
+      <div class="skill-bar-top"><span>${s.name}</span><span>${s.val}%</span></div>
+      <div class="skill-track">
+        <div class="skill-fill" data-val="${s.val}" style="background:${s.color}"></div>
+      </div>
+    </div>
+  `).join('');
+}
+function animateSkillBars() {
+  setTimeout(() => {
+    document.querySelectorAll('.skill-fill').forEach(el => {
+      el.style.width = el.dataset.val + '%';
+    });
+  }, 200);
+}
+
+// ════════════════════════════════════════
+// GAMES GRID
+// ════════════════════════════════════════
+const gamesData = [
+  { title:'Castle Siege Wars', creator:'@AdrianP_Dev · 2023', rating:'94%', visits:'18.4K', playing:1204, tags:['PvP','Strategy','Medieval'], bg:'linear-gradient(135deg,#0e1628,#1a2d52)', emoji:'🏰', genre:'pvp strategy' },
+  { title:'Jungle Temple Run', creator:'@AdrianP_Dev · 2022', rating:'91%', visits:'12.1K', playing:856, tags:['Obby','Adventure','Puzzle'], bg:'linear-gradient(135deg,#081408,#0f2a10)', emoji:'🌿', genre:'adventure' },
+  { title:'Galactic Defenders', creator:'@AdrianP_Dev · 2024', rating:'97%', visits:'22.8K', playing:2340, tags:['Shooter','Sci-Fi','Co-op'], bg:'linear-gradient(135deg,#08080f,#160d2a)', emoji:'🚀', genre:'pvp' },
+  { title:'Tycoon Metropolis', creator:'@AdrianP_Dev · 2023', rating:'89%', visits:'9.2K', playing:440, tags:['Tycoon','City','Building'], bg:'linear-gradient(135deg,#1a0808,#3a1010)', emoji:'🏙️', genre:'tycoon' },
+  { title:'Dungeon Crawl', creator:'@AdrianP_Dev · 2022', rating:'86%', visits:'7.6K', playing:288, tags:['RPG','Adventure','Co-op'], bg:'linear-gradient(135deg,#0a0a0a,#2a1a0a)', emoji:'⚔️', genre:'adventure' },
+  { title:'Sky Battle Arena', creator:'@AdrianP_Dev · 2024', rating:'93%', visits:'11.5K', playing:672, tags:['PvP','Flying','Arena'], bg:'linear-gradient(135deg,#0a1a2e,#1a3a5e)', emoji:'✈️', genre:'pvp strategy' },
+  { title:'Island Tycoon', creator:'@AdrianP_Dev · 2023', rating:'88%', visits:'6.3K', playing:310, tags:['Tycoon','Relaxed','Build'], bg:'linear-gradient(135deg,#0a2e1a,#1a5e3a)', emoji:'🏝️', genre:'tycoon' },
+  { title:'Neon Racer', creator:'@AdrianP_Dev · 2024', rating:'92%', visits:'8.8K', playing:514, tags:['Racing','Neon','Fast'], bg:'linear-gradient(135deg,#1a0a2e,#3a1a5e)', emoji:'🏎️', genre:'adventure' },
+];
+let currentFilter = 'all';
+function buildGames() {
+  const grid = document.getElementById('games-grid');
+  if (!grid) return;
+  const filtered = currentFilter === 'all' ? gamesData : gamesData.filter(g => g.genre.includes(currentFilter));
+  grid.innerHTML = filtered.map(g => `
+    <div class="game-tile" onclick="showToast('🎮','${g.title} — ${g.visits} visits, ${g.rating} rating!')">
+      <div class="gt-thumb" style="background:${g.bg};">
+        <span style="font-size:3rem">${g.emoji}</span>
+        <div class="gt-play"><div class="gt-play-ico">▶</div></div>
+        <div class="gt-live"><span class="gt-dot"></span>${g.playing.toLocaleString()} playing</div>
+      </div>
+      <div class="gt-info">
+        <div class="gt-title">${g.title}</div>
+        <div class="gt-creator">${g.creator}</div>
+        <div class="gt-meta">
+          <span class="gt-rating">👍 ${g.rating}</span>
+          <span class="gt-visits">${g.visits} visits</span>
+        </div>
+        <div class="gt-tags">${g.tags.map(t=>`<span class="gt-tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+function filterGames(btn, f) {
+  currentFilter = f;
+  document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildGames();
+}
+
+// ════════════════════════════════════════
+// INVENTORY
+// ════════════════════════════════════════
+const inventoryData = [
+  { ico:'🎮', name:'Roblox Studio', lvl:'Legendary', rarity:'r-legend', equipped:true, desc:'Primary development environment. Expert-level proficiency across all modules including Terrain Editor, Animation, Constraint systems, and the full Roblox API.', bars:[{l:'World Building',v:95,c:'#fbbf24'},{l:'UI Systems',v:80,c:'#fbbf24'},{l:'Testing/Debug',v:90,c:'#fbbf24'}] },
+  { ico:'🌙', name:'Luau Script', lvl:'Epic', rarity:'r-epic', equipped:false, desc:'Expert in server/client architecture, OOP module patterns, DataStores, RemoteEvents, and complex game mechanic implementation.', bars:[{l:'OOP Patterns',v:78,c:'#a855f7'},{l:'DataStores',v:85,c:'#a855f7'},{l:'Remote Events',v:82,c:'#a855f7'}] },
+  { ico:'🗺️', name:'Level Design', lvl:'Legendary', rarity:'r-legend', equipped:true, desc:'Designing levels that guide players intuitively through flow and pacing, creating memorable environmental storytelling moments.', bars:[{l:'Layout Flow',v:93,c:'#fbbf24'},{l:'Pacing Design',v:88,c:'#fbbf24'},{l:'Visual Story',v:85,c:'#fbbf24'}] },
+  { ico:'⚙️', name:'Game Systems', lvl:'Epic', rarity:'r-epic', equipped:false, desc:'Core gameplay loops, economy design, progression trees, combat feel, and reward system architecture.', bars:[{l:'Economy Design',v:82,c:'#a855f7'},{l:'Progression',v:87,c:'#a855f7'},{l:'Combat Feel',v:80,c:'#a855f7'}] },
+  { ico:'🖥️', name:'UI / UX', lvl:'Rare', rarity:'r-rare', equipped:false, desc:'In-game UI using Roblox ScreenGuis, TweenService animations, and player-friendly feedback and accessibility systems.', bars:[{l:'Interface Design',v:75,c:'#3b82f6'},{l:'Player Feedback',v:80,c:'#3b82f6'},{l:'Accessibility',v:68,c:'#3b82f6'}] },
+  { ico:'🧊', name:'Blender 3D', lvl:'Rare', rarity:'r-rare', equipped:false, desc:'Creating custom low-poly 3D assets, environment props, and character accessories for Roblox game worlds.', bars:[{l:'Modeling',v:65,c:'#3b82f6'},{l:'UV Unwrapping',v:58,c:'#3b82f6'},{l:'Low-Poly',v:72,c:'#3b82f6'}] },
+  { ico:'⚖️', name:'Game Balance', lvl:'Epic', rarity:'r-epic', equipped:false, desc:'Iterative playtesting, difficulty curve tuning, and data-driven balance decisions to create the perfect player experience.', bars:[{l:'Difficulty Curve',v:83,c:'#a855f7'},{l:'Playtesting',v:90,c:'#a855f7'},{l:'Data Analysis',v:75,c:'#a855f7'}] },
+  { ico:'📄', name:'GDD Writing', lvl:'Legendary', rarity:'r-legend', equipped:true, desc:'Writing clear, actionable game design documents that keep teams aligned, on-scope, and moving fast through production.', bars:[{l:'Documentation',v:90,c:'#fbbf24'},{l:'Scope Planning',v:85,c:'#fbbf24'},{l:'Team Comms',v:88,c:'#fbbf24'}] },
+];
+function buildInventory() {
+  const grid = document.getElementById('inv-grid');
+  if (!grid || grid.dataset.built) return;
+  grid.dataset.built = '1';
+  inventoryData.forEach((sk, i) => {
+    const slot = document.createElement('div');
+    slot.className = `inv-slot${sk.equipped?' equipped':''}`;
+    slot.innerHTML = `<div class="inv-ico">${sk.ico}</div><div class="inv-name">${sk.name}</div><div class="inv-lvl">${sk.lvl}</div><div class="inv-rarity-bar ${sk.rarity}"></div>`;
+    slot.onclick = () => showInvDetail(i, slot);
+    grid.appendChild(slot);
+  });
+}
+function showInvDetail(i, slotEl) {
+  document.querySelectorAll('.inv-slot').forEach(s => s.classList.remove('active'));
+  slotEl.classList.add('active');
+  const sk = inventoryData[i];
+  document.getElementById('idd-ico').textContent = sk.ico;
+  document.getElementById('idd-name').textContent = sk.name;
+  document.getElementById('idd-sub').textContent = sk.lvl + ' · ' + sk.rarity.replace('r-','').toUpperCase();
+  document.getElementById('idd-desc').textContent = sk.desc;
+  const barsEl = document.getElementById('idd-bars');
+  barsEl.innerHTML = sk.bars.map(b => `
+    <div class="skill-bar-row" style="margin-bottom:10px">
+      <div class="skill-bar-top"><span>${b.l}</span><span>${b.v}%</span></div>
+      <div class="skill-track"><div class="skill-fill" style="background:${b.c}" data-val="${b.v}"></div></div>
+    </div>
+  `).join('');
+  document.getElementById('inv-empty').style.display = 'none';
+  const det = document.getElementById('inv-detail');
+  det.classList.add('show');
+  requestAnimationFrame(() => {
+    det.querySelectorAll('.skill-fill').forEach(f => f.style.width = f.dataset.val + '%');
+  });
+}
+
+// ════════════════════════════════════════
+// CONTACT
+// ════════════════════════════════════════
+function sendMsg() {
+  const n = document.getElementById('fn').value.trim();
+  const e = document.getElementById('fe').value.trim();
+  const m = document.getElementById('fm').value.trim();
+  const msg = document.getElementById('form-msg');
+  if (!n || !e || !m) { msg.style.color = 'var(--red)'; msg.textContent = 'Please fill in all fields.'; return; }
+  if (!/\S+@\S+\.\S+/.test(e)) { msg.style.color = 'var(--red)'; msg.textContent = 'Enter a valid email.'; return; }
+  msg.style.color = 'var(--green)';
+  msg.textContent = `✓ Message sent! Thanks ${n}, I'll be in touch soon.`;
+  ['fn','fe','fm'].forEach(id => document.getElementById(id).value = '');
+  showToast('📧', 'Message delivered to Adrian!');
+}
+
+// ════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════
+let toastTimer;
+function showToast(ico, msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-ico').textContent = ico;
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ════════════════════════════════════════
+// SCROLL REVEAL
+// ════════════════════════════════════════
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(r => revealObs.observe(r));
+
+// ════════════════════════════════════════
+// MINI PLATFORMER GAME
+// ════════════════════════════════════════
+const collectiblesInfo = [
+  { title:'🎮 Game Designer', body:'3+ years crafting Roblox game loops, level design & economy systems.' },
+  { title:'💻 Luau Scripter', body:'Expert in Luau — UI systems, datastores, OOP modules, remote events.' },
+  { title:'🏆 Studio Lead', body:'Led 4-person team @ PixelForge Studios — 8K peak concurrent users.' },
+  { title:'🎓 IT Graduate', body:'4-year IT degree, game dev focus. Capstone: Roblox matchmaking prototype.' },
+  { title:'🌍 50K+ Visits', body:'12+ shipped games totaling 50,000+ visits on the Roblox platform.' },
+];
+
+const GC = { gravity:0.44, jumpV:-9.5, speed:3.8, tile:26 };
+let gameCanvas, gctx, gState, gTick=0, gLoop=null, popTimer=null, gameInited=false;
+
+function initGame() {
+  if (gameInited) return;
+  gameInited = true;
+  gameCanvas = document.getElementById('gameCanvas');
+  gctx = gameCanvas.getContext('2d');
+  resizeGame();
+  window.addEventListener('resize', resizeGame);
+  resetGame();
+  cancelAnimationFrame(gLoop);
+  runGame();
+  document.addEventListener('keydown', gKeyDown);
+  document.addEventListener('keyup', gKeyUp);
+  ['mb-l','mb-j','mb-r'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    const dir = id === 'mb-l' ? 'left' : id === 'mb-r' ? 'right' : 'jump';
+    btn.addEventListener('touchstart', e => { e.preventDefault(); gKeySet(dir, true); }, {passive:false});
+    btn.addEventListener('touchend', e => { e.preventDefault(); gKeySet(dir, false); }, {passive:false});
+    btn.addEventListener('mousedown', () => gKeySet(dir, true));
+    btn.addEventListener('mouseup', () => gKeySet(dir, false));
+    btn.addEventListener('mouseleave', () => gKeySet(dir, false));
+  });
+}
+
+function resizeGame() {
+  const wrap = gameCanvas.parentElement;
+  const W = wrap.offsetWidth;
+  const H = Math.min(360, Math.max(220, W * 0.36));
+  gameCanvas.width = W; gameCanvas.height = H;
+  gameCanvas.style.width = W + 'px'; gameCanvas.style.height = H + 'px';
+  if (gState) resetGame();
+}
+
+function buildLevel(W, H) {
+  const g = H - GC.tile;
+  const T = GC.tile;
+  return {
+    platforms: [
+      {x:0,y:g,w:7*T,h:T},{x:9*T,y:g,w:6*T,h:T},{x:17*T,y:g,w:8*T,h:T},
+      {x:27*T,y:g,w:5*T,h:T},{x:34*T,y:g,w:8*T,h:T},{x:44*T,y:g,w:6*T,h:T},
+      {x:52*T,y:g,w:9*T,h:T},
+      {x:3*T,y:g-3*T,w:4*T,h:T},{x:11*T,y:g-4*T,w:4*T,h:T},
+      {x:19*T,y:g-3*T,w:4*T,h:T},{x:28*T,y:g-4*T,w:3*T,h:T},
+      {x:36*T,y:g-3*T,w:4*T,h:T},{x:45*T,y:g-4*T,w:4*T,h:T},
+      {x:50*T,y:g-6*T,w:3*T,h:T},{x:57*T,y:g-2*T,w:6*T,h:T},
+    ],
+    collectibles: [
+      {x:4*T,y:g-5*T},{x:12*T,y:g-6*T},{x:20*T,y:g-5*T},
+      {x:29*T,y:g-6*T},{x:45.5*T,y:g-7*T},
+    ],
+    groundY: g, worldW: 65*T,
+  };
+}
+
+function resetGame() {
+  const W = gameCanvas.width, H = gameCanvas.height;
+  const lv = buildLevel(W, H);
+  gState = {
+    p: {x:50, y:lv.groundY-34, vx:0, vy:0, onGround:false, facing:1, frame:0, ft:0},
+    cam: {x:0},
+    lv, score:0, lives:3, collected:0,
+    keys:{left:false,right:false,jump:false},
+    jumpUsed:false,
+    particles:[], over:false, won:false,
+    collectibles: lv.collectibles.map((c,i) => ({...c,w:20,h:20,done:false,bob:i*1.1,id:i})),
+  };
+  document.getElementById('g-score').textContent = '0';
+  document.getElementById('g-lives').textContent = '♥♥♥';
+  for(let i=0;i<5;i++) { const p=document.getElementById('p'+i); if(p) p.classList.remove('on'); }
+  hideGip();
+}
+
+function gKeyDown(e) {
+  if(e.code==='ArrowLeft'||e.code==='KeyA') gState.keys.left=true;
+  if(e.code==='ArrowRight'||e.code==='KeyD') gState.keys.right=true;
+  if(e.code==='Space'||e.code==='ArrowUp'||e.code==='KeyW') {
+    e.preventDefault();
+    gState.keys.jump=true;
+    if(gState.over||gState.won) resetGame();
+  }
+}
+function gKeyUp(e) {
+  if(e.code==='ArrowLeft'||e.code==='KeyA') gState.keys.left=false;
+  if(e.code==='ArrowRight'||e.code==='KeyD') gState.keys.right=false;
+  if(e.code==='Space'||e.code==='ArrowUp'||e.code==='KeyW') gState.keys.jump=false;
+}
+function gKeySet(dir, val) {
+  if(!gState) return;
+  if(dir==='left') gState.keys.left=val;
+  if(dir==='right') gState.keys.right=val;
+  if(dir==='jump') {
+    gState.keys.jump=val;
+    if(val && (gState.over||gState.won)) resetGame();
+  }
+}
+
+function showGip(info, sx, sy) {
+  const el = document.getElementById('gip');
+  document.getElementById('gip-title').textContent = info.title;
+  document.getElementById('gip-body').textContent = info.body;
+  const wrap = gameCanvas.parentElement;
+  const maxX = wrap.offsetWidth - 220;
+  el.style.left = Math.max(8, Math.min(maxX, sx - 105)) + 'px';
+  el.style.top = Math.max(8, sy - 80) + 'px';
+  el.classList.add('show');
+}
+function hideGip() { document.getElementById('gip').classList.remove('show'); }
+
+function spawnParts(x, y) {
+  for(let i=0;i<14;i++) {
+    const a = Math.PI*2*i/14;
+    const spd = 2.5 + Math.random()*2.5;
+    gState.particles.push({x,y,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd-2.5,life:1,size:3+Math.random()*4});
+  }
+}
+
+function runGame() {
+  function frame() {
+    gLoop = requestAnimationFrame(frame);
+    if (!gState) return;
+    const W = gameCanvas.width, H = gameCanvas.height;
+    const p = gState.p, cam = gState.cam, keys = gState.keys, lv = gState.lv;
+    gctx.clearRect(0,0,W,H);
+
+    // BG
+    const grad = gctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'#060620'); grad.addColorStop(.7,'#0d0d2e'); grad.addColorStop(1,'#0a0a0a');
+    gctx.fillStyle = grad; gctx.fillRect(0,0,W,H);
+    // Stars
+    for(let i=0;i<36;i++) {
+      const sx = ((i*139+200) % (W*3) - cam.x*.08) % W;
+      const sy = (i*71) % (H*.6);
+      gctx.globalAlpha = .3+(i%3)*.2;
+      gctx.fillStyle = '#fff';
+      gctx.fillRect(sx,sy,1.5,1.5);
+    }
+    gctx.globalAlpha = 1;
+
+    if(gState.over) {
+      gctx.fillStyle='rgba(0,0,0,.75)'; gctx.fillRect(0,0,W,H);
+      gctx.fillStyle='#ef4444'; gctx.font=`bold 28px Nunito,sans-serif`; gctx.textAlign='center';
+      gctx.fillText('GAME OVER',W/2,H/2-14);
+      gctx.fillStyle='#666'; gctx.font='13px Space Mono,monospace';
+      gctx.fillText('Press SPACE or ↑ to restart',W/2,H/2+14);
+      gctx.textAlign='left'; return;
+    }
+    if(gState.won) {
+      gctx.fillStyle='rgba(0,0,0,.75)'; gctx.fillRect(0,0,W,H);
+      gctx.fillStyle='#fbbf24'; gctx.font=`bold 26px Nunito,sans-serif`; gctx.textAlign='center';
+      gctx.fillText('🏆 LEVEL COMPLETE!',W/2,H/2-20);
+      gctx.fillStyle='#22c55e'; gctx.font=`bold 14px Space Mono,monospace`;
+      gctx.fillText('All resume items collected!',W/2,H/2+8);
+      gctx.fillStyle='#555'; gctx.font='12px Space Mono,monospace';
+      gctx.fillText('Press SPACE to play again',W/2,H/2+28);
+      gctx.textAlign='left'; return;
+    }
+
+    // Input
+    if(keys.left){p.vx=-GC.speed;p.facing=-1;}
+    else if(keys.right){p.vx=GC.speed;p.facing=1;}
+    else p.vx*=.75;
+    if(keys.jump && p.onGround && !gState.jumpUsed){p.vy=GC.jumpV;p.onGround=false;gState.jumpUsed=true;}
+    if(!keys.jump) gState.jumpUsed=false;
+
+    // Physics
+    p.vy+=GC.gravity; p.x+=p.vx; p.y+=p.vy; p.onGround=false;
+    p.x = Math.max(0, Math.min(p.x, lv.worldW-22));
+
+    // Platform collision
+    lv.platforms.forEach(pl => {
+      if(p.x+22>pl.x && p.x<pl.x+pl.w && p.y+28>pl.y && p.y+28<pl.y+pl.h+8 && p.vy>=0){
+        p.y=pl.y-28; p.vy=0; p.onGround=true;
+      }
+    });
+
+    // Fall
+    if(p.y>H+40){
+      gState.lives--;
+      const ls=['','♥','♥♥','♥♥♥'];
+      document.getElementById('g-lives').textContent=ls[Math.max(0,gState.lives)]||'✗';
+      if(gState.lives<=0){gState.over=true;}
+      else{p.x=50;p.y=lv.groundY-40;p.vx=0;p.vy=0;}
+    }
+
+    // Camera
+    const tc = p.x - W*.35;
+    cam.x += (tc - cam.x)*.1;
+    cam.x = Math.max(0, Math.min(cam.x, lv.worldW-W));
+
+    // Win
+    if(p.x > lv.worldW-5*GC.tile) gState.won=true;
+
+    // Draw platforms
+    lv.platforms.forEach(pl => drawTile(pl.x,pl.y,pl.w,pl.h,cam.x));
+
+    // Flag
+    const fx = lv.worldW-4*GC.tile-cam.x, gy = lv.groundY;
+    gctx.fillStyle='#888'; gctx.fillRect(fx+3,gy-5*GC.tile,3,5*GC.tile);
+    gctx.fillStyle='#22c55e'; gctx.fillRect(fx+6,gy-5*GC.tile,28,18);
+    gctx.fillStyle='#fff'; gctx.font='bold 9px Space Mono,monospace';
+    gctx.fillText('END',fx+9,gy-5*GC.tile+13);
+
+    // Collectibles
+    gState.collectibles.forEach((c,ci) => {
+      if(c.done) return;
+      const bob = Math.sin(gTick*.055+c.bob)*4;
+      const cx2 = c.x+c.w/2, cy2 = c.y+c.h/2+bob;
+      const sx2 = cx2-cam.x;
+      // Glow
+      gctx.save(); gctx.globalAlpha=.15+Math.abs(Math.sin(gTick*.055+c.bob))*.18;
+      gctx.fillStyle='#fbbf24'; gctx.beginPath(); gctx.arc(sx2,cy2,16,0,Math.PI*2); gctx.fill();
+      gctx.restore();
+      // Star
+      gctx.save(); gctx.translate(sx2,cy2); gctx.rotate(gTick*.02);
+      gctx.fillStyle='#fbbf24'; gctx.beginPath();
+      for(let i=0;i<5;i++){
+        const a=(Math.PI*2*i/5)-Math.PI/2, a2=a+Math.PI/5;
+        if(i===0)gctx.moveTo(Math.cos(a)*11,Math.sin(a)*11);
+        else gctx.lineTo(Math.cos(a)*11,Math.sin(a)*11);
+        gctx.lineTo(Math.cos(a2)*4.4,Math.sin(a2)*4.4);
+      }
+      gctx.closePath(); gctx.fill();
+      gctx.fillStyle='rgba(255,255,255,.3)'; gctx.beginPath(); gctx.arc(-2,-3,3,0,Math.PI*2); gctx.fill();
+      gctx.restore();
+      // Collect
+      const dist=Math.hypot(p.x+11-cx2, p.y+14-cy2);
+      if(dist<22){
+        c.done=true; gState.score+=100; gState.collected++;
+        document.getElementById('g-score').textContent=gState.score;
+        const pip=document.getElementById('p'+ci); if(pip) pip.classList.add('on');
+        spawnParts(sx2,cy2);
+        showGip(collectiblesInfo[ci],sx2,cy2);
+        showToast('⭐','Collected: '+collectiblesInfo[ci].title.replace(/^[^ ]+ /,''));
+        clearTimeout(popTimer); popTimer=setTimeout(hideGip,5000);
+      }
+    });
+
+    // Particles
+    gState.particles=gState.particles.filter(pt=>pt.life>0);
+    gState.particles.forEach(pt=>{
+      pt.x+=pt.vx;pt.y+=pt.vy;pt.vy+=.15;pt.life-=.04;
+      gctx.globalAlpha=pt.life;gctx.fillStyle='#fbbf24';
+      gctx.fillRect(pt.x-pt.size/2,pt.y-pt.size/2,pt.size,pt.size);
+      gctx.globalAlpha=1;
+    });
+
+    // Player
+    drawPlayer(p, cam.x);
+
+    // Minimap
+    gctx.fillStyle='rgba(0,0,0,.5)'; gctx.fillRect(W-84,8,80,10);
+    gctx.fillStyle='#22c55e'; gctx.fillRect(W-84,8,(p.x/lv.worldW)*80,10);
+    gctx.strokeStyle='#333'; gctx.lineWidth=1; gctx.strokeRect(W-84,8,80,10);
+
+    // Anim
+    p.ft++; if(p.ft>5){p.frame++;p.ft=0;}
+    gTick++;
+  }
+  frame();
+}
+
+function drawTile(x,y,w,h,camX) {
+  const T=GC.tile, cols=Math.ceil(w/T);
+  for(let c=0;c<cols;c++){
+    const tx=x-camX+c*T, tw=Math.min(T,x-camX+w-tx);
+    if(tx+tw<0||tx>gctx.canvas.width) continue;
+    gctx.fillStyle='#1e3a5f'; gctx.fillRect(tx,y,tw,h);
+    gctx.fillStyle='#2a4f7a'; gctx.fillRect(tx,y,tw,4);
+    if(tw>=16){const s=Math.floor(tw/T);for(let i=0;i<s;i++){gctx.fillStyle='#2a4f7a';gctx.fillRect(tx+i*T+7,y-3,9,4);}}
+    gctx.fillStyle='rgba(0,0,0,.25)'; gctx.fillRect(tx,y+h-3,tw,3);
+  }
+}
+
+function drawPlayer(p, camX) {
+  const sx=p.x-camX, sy=p.y;
+  gctx.save();
+  gctx.translate(sx+11,sy+14);
+  if(p.facing<0) gctx.scale(-1,1);
+  const lb=p.onGround&&Math.abs(p.vx)>.5?Math.sin(p.frame*.4)*3:0;
+  // Legs
+  gctx.fillStyle='#1a1a2e'; gctx.fillRect(-8,4,7,10+lb); gctx.fillRect(1,4,7,10-lb);
+  // Shoes
+  gctx.fillStyle='#333'; gctx.fillRect(-9,13+lb,8,4); gctx.fillRect(1,13-lb,8,4);
+  // Body
+  gctx.fillStyle='#0066ff'; gctx.fillRect(-8,-7,16,12);
+  // Arms
+  gctx.fillStyle='#0066ff'; gctx.fillRect(-12,-6,5,10-lb); gctx.fillRect(7,-6,5,10+lb);
+  // Hands
+  gctx.fillStyle='#f0c080'; gctx.fillRect(-12,3-lb,5,5); gctx.fillRect(7,3+lb,5,5);
+  // Head
+  gctx.fillStyle='#f0c080'; gctx.fillRect(-7,-17,14,12);
+  gctx.fillStyle='#8B4513'; gctx.fillRect(-7,-17,14,5);
+  // Eyes
+  gctx.fillStyle='#111'; gctx.fillRect(-5,-13,4,4); gctx.fillRect(1,-13,4,4);
+  gctx.fillStyle='#fff'; gctx.fillRect(-4,-12,2,2); gctx.fillRect(2,-12,2,2);
+  gctx.restore();
+}
+</script>
+</body>
+</html>
