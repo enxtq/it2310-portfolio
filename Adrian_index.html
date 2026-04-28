@@ -187,18 +187,19 @@ body {
 /* ── TOP BAR ── */
 #topbar {
   position: sticky; top: 0; z-index: 100;
-  height: 50px;
-  background: var(--topbar-bg);
-  border-bottom: 1px solid var(--border);
+  height: 68px;
+  background: rgba(15,16,23,.90);
+  border-bottom: 1px solid rgba(255,255,255,.08);
   display: flex; align-items: center;
-  padding: 0 24px; gap: 18px;
-  box-shadow: 0 1px 0 var(--border);
-  transition: background .3s;
+  padding: 0 26px; gap: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.12);
+  backdrop-filter: blur(16px);
+  transition: background .3s, border-color .3s, box-shadow .3s;
 }
 .topbar-logo {
-  display: flex; align-items: center; gap: 9px;
-  font-weight: 800; font-size: 1rem;
-  letter-spacing: -.4px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 900; font-size: 1.05rem;
+  letter-spacing: -.5px; color: var(--text);
   text-decoration: none; flex-shrink: 0;
   cursor: pointer;
 }
@@ -1288,7 +1289,8 @@ body {
     <a class="topbar-logo" onclick="showPage('home')">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect width="28" height="28" rx="4" fill="#00A2FF"/>
-        <text x="14" y="21" font-size="17" font-weight="900" text-anchor="middle" fill="white" font-family="Arial Black, sans-serif">R</text>
+        <path d="M9 9h10v2H11v6h8v2H11v4H9V9z" fill="white"/>
+        <path d="M17 13l2 2v4h-2v-4l-2-2h2z" fill="white"/>
       </svg>
       Adrian Peterson
     </a>
@@ -1334,43 +1336,7 @@ body {
         </svg>
         50K+ Visits
       </div>
-      <div class="tb-avatar" onclick="showPage('profile')">
-        <svg viewBox="0 0 44 50" fill="none" width="34" height="34">
-          <ellipse cx="22" cy="12" rx="19" ry="13" fill="#3D2010"/>
-          <ellipse cx="4"  cy="22" rx="6"  ry="13" fill="#3D2010"/>
-          <ellipse cx="40" cy="22" rx="6"  ry="13" fill="#3D2010"/>
-          <ellipse cx="22" cy="27" rx="14" ry="15" fill="#C4936A"/>
-          <path d="M10,16 Q6,6   8,1  Q12,6  12,14Z" fill="#3D2010"/>
-          <path d="M15,10 Q15,0  22,0 Q24,6  20,12Z" fill="#3D2010"/>
-          <path d="M24,10 Q26,0  32,1 Q32,8  28,12Z" fill="#3D2010"/>
-          <path d="M32,16 Q38,6  42,12 Q38,18 34,18Z" fill="#3D2010"/>
-          <path d="M8,20  Q2,28  4,36 Q6,40  10,38 Q7,30  9,24Z" fill="#3D2010"/>
-          <path d="M36,20 Q42,28 40,36 Q38,40 34,38 Q37,30 35,24Z" fill="#3D2010"/>
-          <ellipse cx="8"  cy="28" rx="3" ry="4" fill="#C4936A"/>
-          <ellipse cx="36" cy="28" rx="3" ry="4" fill="#C4936A"/>
-          <path d="M10,21 Q16,16 21,18" stroke="#2A1A0A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M23,18 Q28,16 34,21" stroke="#2A1A0A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <ellipse cx="16" cy="27"   rx="5.5" ry="4.2" fill="#120800"/>
-          <ellipse cx="16" cy="27.5" rx="4"   ry="3"   fill="white"/>
-          <ellipse cx="16" cy="27.5" rx="3"   ry="3.5" fill="#7B4A2D"/>
-          <ellipse cx="16" cy="28"   rx="1.8" ry="2.3" fill="#3D1800"/>
-          <ellipse cx="16" cy="28.5" rx="1.1" ry="1.4" fill="#120800"/>
-          <path d="M10,24 Q16,19 22,24" stroke="#120800" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <circle cx="18" cy="22.5" r="1.3" fill="white"/>
-          <ellipse cx="28" cy="27"   rx="5.5" ry="4.2" fill="#120800"/>
-          <ellipse cx="28" cy="27.5" rx="4"   ry="3"   fill="white"/>
-          <ellipse cx="28" cy="27.5" rx="3"   ry="3.5" fill="#7B4A2D"/>
-          <ellipse cx="28" cy="28"   rx="1.8" ry="2.3" fill="#3D1800"/>
-          <ellipse cx="28" cy="28.5" rx="1.1" ry="1.4" fill="#120800"/>
-          <path d="M22,24 Q28,19 34,24" stroke="#120800" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <circle cx="30" cy="22.5" r="1.3" fill="white"/>
-          <path d="M20,33 Q22,35.5 24,33" stroke="#B07050" stroke-width="0.9" fill="none" stroke-linecap="round"/>
-          <path d="M16,38 Q22,43 28,38" stroke="#8B4030" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-          <rect x="6"  y="44" width="32" height="7" rx="4" fill="#8C8C8C"/>
-          <rect x="2"  y="45" width="5"  height="6" rx="2" fill="#8C8C8C"/>
-          <rect x="37" y="45" width="5"  height="6" rx="2" fill="#8C8C8C"/>
-        </svg>
-      </div>
+      <div class="tb-avatar" onclick="showPage('profile')" style="background:linear-gradient(135deg,#00A2FF,#0044CC);color:#fff;font-weight:900;font-size:.95rem;letter-spacing:.05em;">AP</div>
     </div>
   </div>
 
@@ -1406,7 +1372,7 @@ body {
       <div class="sidebar-section">
         <div class="sidebar-section-title">Social</div>
 <div class="sidebar-item" onclick="window.open('https://github.com/enxtq/it2310-portfolio','_blank')"><span class="sidebar-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span> GitHub</div>
-        <div class="sidebar-item" onclick="window.open('https://linkedin.com/in/adrianpeterson','_blank')"><span class="sidebar-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn</div>
+        <div class="sidebar-item" onclick="window.open('https://www.linkedin.com/in/adrian-peterson-087b3a406/','_blank')"><span class="sidebar-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn</div>
       </div>
       <div class="sidebar-section">
         <div class="sidebar-premium" onclick="showPage('contact')">
@@ -1427,70 +1393,37 @@ body {
         <div class="home-hero reveal">
           <div class="home-hero-bg"></div>
           <div class="home-hero-avatar">
-            <svg viewBox="0 0 120 200" fill="none" width="220" height="220">
-              <ellipse cx="60" cy="196" rx="36" ry="4" fill="rgba(0,0,0,.25)"/>
-              <rect x="34" y="132" width="20" height="52" rx="6" fill="#1a1a2e"/>
-              <rect x="66" y="132" width="20" height="52" rx="6" fill="#1a1a2e"/>
-              <rect x="30" y="176" width="26" height="11" rx="5" fill="#111"/>
-              <rect x="64" y="176" width="26" height="11" rx="5" fill="#111"/>
-              <rect x="24" y="84"  width="72" height="55" rx="10" fill="#8C8C8C"/>
-              <path d="M54 84 Q60 98 66 84" fill="#7A7A7A"/>
-              <rect x="42" y="115" width="36" height="18" rx="6" fill="#7A7A7A"/>
-              <rect x="6"  y="86"  width="18" height="50" rx="7" fill="#8C8C8C"/>
-              <rect x="96" y="86"  width="18" height="50" rx="7" fill="#8C8C8C"/>
-              <ellipse cx="15"  cy="138" rx="10" ry="8" fill="#C4936A"/>
-              <ellipse cx="105" cy="138" rx="10" ry="8" fill="#C4936A"/>
-              <rect x="50" y="72" width="20" height="16" rx="5" fill="#C4936A"/>
-              <path d="M24,70 Q8,54 10,34 Q14,12 28,4 Q42,-2 60,-2 Q78,-2 92,4 Q106,12 110,34 Q112,54 96,70 Q86,48 60,44 Q34,48 24,70Z" fill="#3D2010"/>
-              <ellipse cx="8"   cy="58" rx="10" ry="22" fill="#3D2010"/>
-              <ellipse cx="112" cy="58" rx="10" ry="22" fill="#3D2010"/>
-              <ellipse cx="60"  cy="58" rx="34" ry="36" fill="#C4936A"/>
-              <path d="M26,32 Q18,14 22,-4 Q32,2  34,20Z" fill="#3D2010"/>
-              <path d="M34,20 Q28,2  40,-10 Q46,4  42,18Z" fill="#3D2010"/>
-              <path d="M42,14 Q42,-8 56,-14 Q60,2  54,16Z" fill="#3D2010"/>
-              <path d="M56,10 Q60,-16 72,-12 Q70,4  64,16Z" fill="#3D2010"/>
-              <path d="M68,14 Q76,-8 88,-2  Q84,12 76,20Z" fill="#3D2010"/>
-              <path d="M80,20 Q94,10 102,24 Q94,32 86,30Z" fill="#3D2010"/>
-              <path d="M94,32 Q110,26 112,42 Q102,46 96,40Z" fill="#3D2010"/>
-              <path d="M26,42 Q18,60 22,78 Q26,84 30,80 Q26,68 28,50Z" fill="#3D2010"/>
-              <path d="M94,42 Q102,60 98,78 Q94,84 90,80 Q94,68 92,50Z" fill="#3D2010"/>
-              <ellipse cx="26" cy="62" rx="5" ry="7" fill="#C4936A"/>
-              <ellipse cx="94" cy="62" rx="5" ry="7" fill="#C4936A"/>
-              <path d="M32,48 Q44,40 56,44" stroke="#2A1A0A" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <path d="M64,44 Q76,40 88,48" stroke="#2A1A0A" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <ellipse cx="44" cy="62" rx="13" ry="10" fill="#120800"/>
-              <ellipse cx="44" cy="63" rx="10" ry="7"  fill="white"/>
-              <ellipse cx="44" cy="63" rx="8"  ry="8"  fill="#7B4A2D"/>
-              <ellipse cx="44" cy="64" rx="5"  ry="5.5" fill="#3D1800"/>
-              <ellipse cx="44" cy="65" rx="3"  ry="3.5" fill="#120800"/>
-              <path d="M30,57 Q44,49 58,57" stroke="#120800" stroke-width="6" fill="none" stroke-linecap="round"/>
-              <circle cx="47" cy="54" r="2.5" fill="white"/>
-              <circle cx="40" cy="69" r="1.2" fill="rgba(255,255,255,.4)"/>
-              <path d="M33,69 Q44,75 55,69" stroke="#6B3020" stroke-width="1.5" fill="none"/>
-              <ellipse cx="76" cy="62" rx="13" ry="10" fill="#120800"/>
-              <ellipse cx="76" cy="63" rx="10" ry="7"  fill="white"/>
-              <ellipse cx="76" cy="63" rx="8"  ry="8"  fill="#7B4A2D"/>
-              <ellipse cx="76" cy="64" rx="5"  ry="5.5" fill="#3D1800"/>
-              <ellipse cx="76" cy="65" rx="3"  ry="3.5" fill="#120800"/>
-              <path d="M62,57 Q76,49 90,57" stroke="#120800" stroke-width="6" fill="none" stroke-linecap="round"/>
-              <circle cx="79" cy="54" r="2.5" fill="white"/>
-              <circle cx="72" cy="69" r="1.2" fill="rgba(255,255,255,.4)"/>
-              <path d="M65,69 Q76,75 87,69" stroke="#6B3020" stroke-width="1.5" fill="none"/>
-              <path d="M57,76 Q60,82 63,76" stroke="#B07050" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <path d="M50,87 Q60,95 70,87" stroke="#8B4030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <circle cx="36" cy="70" r="1.4" fill="#C07858" opacity="0.7"/>
-              <circle cx="40" cy="73" r="1.1" fill="#C07858" opacity="0.7"/>
-              <circle cx="33" cy="74" r="1"   fill="#C07858" opacity="0.7"/>
-              <circle cx="84" cy="70" r="1.4" fill="#C07858" opacity="0.7"/>
-              <circle cx="80" cy="73" r="1.1" fill="#C07858" opacity="0.7"/>
-              <circle cx="87" cy="74" r="1"   fill="#C07858" opacity="0.7"/>
+            <svg viewBox="0 0 220 220" width="220" height="220" aria-hidden="true">
+              <defs>
+                <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00A2FF"/>
+                  <stop offset="100%" stop-color="#1D4ED8"/>
+                </linearGradient>
+                <linearGradient id="heroGlow" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="rgba(0,162,255,.4)"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+              </defs>
+              <rect x="10" y="10" width="200" height="200" rx="36" fill="url(#heroGrad)"/>
+              <circle cx="110" cy="90" r="42" fill="rgba(255,255,255,.20)"/>
+              <circle cx="110" cy="90" r="36" fill="#fff"/>
+              <circle cx="110" cy="90" r="30" fill="#0f172a"/>
+              <circle cx="94" cy="80" r="7" fill="#fff"/>
+              <circle cx="126" cy="80" r="7" fill="#fff"/>
+              <circle cx="94" cy="80" r="3" fill="#0f172a"/>
+              <circle cx="126" cy="80" r="3" fill="#0f172a"/>
+              <path d="M92 108c8 10 28 10 36 0" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <rect x="70" y="118" width="80" height="58" rx="28" fill="#0f172a"/>
+              <path d="M82 150h56" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="70" cy="60" r="14" fill="url(#heroGlow)"/>
+              <circle cx="152" cy="54" r="10" fill="url(#heroGlow)"/>
+              <circle cx="140" cy="170" r="22" fill="rgba(255,255,255,.14)"/>
             </svg>
           </div>
           <div class="home-hero-title">Hi, I'm Adrian Peterson<br/>Game Designer &amp; Roblox Dev</div>
           <div class="home-hero-sub">// 12+ games &middot; 50K+ visits &middot; 3 years experience</div>
           <div class="home-hero-btns">
-            <button class="hh-btn hh-btn-blue" onclick="showPage('profile')">View Profile</button>
-            <button class="hh-btn hh-btn-white" onclick="showPage('game')"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>Play Games</button>
+            <button class="hh-btn hh-btn-blue" onclick="showPage('games')">View Games</button>
             <button class="hh-btn hh-btn-ghost" onclick="showPage('contact')">Hire Me</button>
           </div>
         </div>
@@ -1524,32 +1457,32 @@ body {
 
         <div class="reveal">
           <div class="section-title">Recommended For You</div>
-          <div class="section-sub">Based on your interest in game design</div>
+          <div class="section-sub">Based on your best-performing portfolio games</div>
           <div class="rec-grid">
             <div class="rec-card" onclick="showPage('games')">
-              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a2d52,#0e1628);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#0e1628,#1a2d52,#2a4080);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v6H3z"/><path d="M6 9v10h12V9"/></svg></div>
               <div class="rec-title">Castle Siege Wars</div>
               <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>94%</div>
             </div>
             <div class="rec-card" onclick="showPage('games')">
-              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a0a2e,#3a1a5e);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M8 14s2 2 4 0 4 0 4 0"/><circle cx="9" cy="10" r="1" fill="white"/><circle cx="15" cy="10" r="1" fill="white"/></svg></div>
-              <div class="rec-title">Pet Simulator X</div>
-              <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>95%</div>
-            </div>
-            <div class="rec-card" onclick="showPage('games')">
-              <div class="rec-thumb" style="background:linear-gradient(135deg,#0f2a10,#081408);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#081408,#0f2a10,#1a4a1a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l8-16 8 16H4z"/><path d="M12 10v6"/></svg></div>
               <div class="rec-title">Jungle Temple Run</div>
               <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>91%</div>
             </div>
             <div class="rec-card" onclick="showPage('games')">
-              <div class="rec-thumb" style="background:linear-gradient(135deg,#160d2a,#08080f);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#08080f,#160d2a,#2a1a4a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg></div>
               <div class="rec-title">Galactic Defenders</div>
               <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>97%</div>
             </div>
-            <div class="rec-card" onclick="showPage('exp')">
-              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a0808,#3a1010);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="13" rx="1"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/><path d="M21 9h-5v13h4a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1z"/><path d="M7 14h3M7 17h2"/></svg></div>
+            <div class="rec-card" onclick="showPage('games')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#1a0808,#3a1010,#5a1a1a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16V8H4v12z"/><path d="M8 8V4h8v4"/></svg></div>
               <div class="rec-title">Tycoon Metropolis</div>
               <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>89%</div>
+            </div>
+            <div class="rec-card" onclick="showPage('games')">
+              <div class="rec-thumb" style="background:linear-gradient(135deg,#0a1a2e,#1a3a6e,#3a6aae);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l6-16 6 16H4z"/><path d="M6 10h12"/></svg></div>
+              <div class="rec-title">Sky Obby Challenge</div>
+              <div class="rec-rating"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="vertical-align:middle;margin-right:2px"><circle cx="6" cy="6" r="5.5" fill="#02B757"/><polyline points="3,6 5,8.5 9,4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>92%</div>
             </div>
             <div class="rec-card" onclick="showPage('contact')">
               <div class="rec-thumb" style="background:linear-gradient(135deg,#0a1a0a,#1a3a1a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v3M9 14h6"/></svg></div>
@@ -1863,76 +1796,26 @@ body {
       </div>
 
       <!-- ════════════════════════════════════
-           PLAY & LEARN PAGE
+           GAME SHOWCASE PAGE
       ════════════════════════════════════ -->
       <div class="page page-game" id="page-game">
-  <div class="play-hub-header">
-    <div class="section-title">Play &amp; Learn</div>
-    <div class="section-sub">Interactive games — discover facts about Adrian as you play</div>
-  </div>
+        <div class="play-hub-header">
+          <div class="section-title">Playing: <span id="current-game-title">None</span></div>
+          <div class="section-sub">Enjoy this mini-game based on Adrian's portfolio!</div>
+        </div>
 
-  <div class="play-tabs" id="playTabs">
-    <button class="ptab active" onclick="switchPlayGame('obby',this)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z" fill="currentColor" stroke="none"/></svg>
-      Skill Obby
-    </button>
-    <button class="ptab" onclick="switchPlayGame('mine',this)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5l7 7-14 14-7-7 14-14z"/><path d="M9 9l6 6M3.5 17.5l3 3"/></svg>
-      Skill Mine
-    </button>
-    <button class="ptab" onclick="switchPlayGame('fish',this)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12C6.5 12 4 10 4 7s2.5-5 6-5 8 3 8 7-4 5-4 5"/><path d="M6.5 12c0 3 2 7 5.5 7s5.5-4 5.5-7"/><path d="M12 17v4M9 20h6"/></svg>
-      Project Fisher
-    </button>
-    <button class="ptab" onclick="switchPlayGame('shoot',this)">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-      Skill Shooter
-    </button>
-  </div>
-
-  <div class="play-arena">
-    <!-- OBBY -->
-    <div class="play-game-panel active" id="pg-obby">
-      <canvas id="cv-obby" width="760" height="380"></canvas>
-      <div class="play-info-panel" id="pi-obby">
-        <div class="pip-title">Skill Discovered</div>
-        <div class="pip-empty" id="pie-obby">Jump to a platform to unlock info!</div>
-        <div class="pip-cards" id="pic-obby"></div>
-        <div class="pip-hint">SPACE / W / ↑ to jump &nbsp;|&nbsp; A/D to move</div>
+        <div class="play-arena">
+          <div class="play-game-panel active" id="pg-current">
+            <canvas id="cv-current" width="760" height="380"></canvas>
+            <div class="play-info-panel" id="pi-current">
+              <div class="pip-title">Game in Progress</div>
+              <div class="pip-empty" id="pie-current">Playing...</div>
+              <div class="pip-cards" id="pic-current"></div>
+              <div class="pip-hint">Enjoy the game!</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- MINE -->
-    <div class="play-game-panel" id="pg-mine">
-      <canvas id="cv-mine" width="760" height="380"></canvas>
-      <div class="play-info-panel" id="pi-mine">
-        <div class="pip-title">Ore Discovered</div>
-        <div class="pip-empty" id="pie-mine">Click blocks to mine and reveal skills!</div>
-        <div class="pip-cards" id="pic-mine"></div>
-        <div class="pip-hint">Click blocks to mine</div>
-      </div>
-    </div>
-    <!-- FISH -->
-    <div class="play-game-panel" id="pg-fish">
-      <canvas id="cv-fish" width="760" height="380"></canvas>
-      <div class="play-info-panel" id="pi-fish">
-        <div class="pip-title">Project Caught</div>
-        <div class="pip-empty" id="pie-fish">Press SPACE to cast your line!</div>
-        <div class="pip-cards" id="pic-fish"></div>
-        <div class="pip-hint">SPACE to cast &nbsp;|&nbsp; Click when fish bites!</div>
-      </div>
-    </div>
-    <!-- SHOOT -->
-    <div class="play-game-panel" id="pg-shoot">
-      <canvas id="cv-shoot" width="760" height="380"></canvas>
-      <div class="play-info-panel" id="pi-shoot">
-        <div class="pip-title">Skill Unlocked</div>
-        <div class="pip-empty" id="pie-shoot">Click targets to reveal skills!</div>
-        <div class="pip-cards" id="pic-shoot"></div>
-        <div class="pip-hint">Click moving targets to shoot</div>
-      </div>
-    </div>
-  </div>
-</div>
 
       <!-- ════════════════════════════════════
            CONTACT PAGE
@@ -1944,7 +1827,16 @@ body {
         <div class="contact-layout">
           <div class="contact-card">
             <h3>Contact Info</h3>
-            <p>Feel free to reach out through any of these channels.</p>
+            <p>Available for Roblox development, freelance projects, game design consulting, and studio roles. Reach out any time for a fast response.</p>
+
+            <div class="contact-link" onclick="navigator.clipboard.writeText('216-612-2818');showToast('&#128222;','Phone number copied to clipboard!')">
+              <div class="cl-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2c-2.48-.37-4.83-1.5-6.95-3.11a19.79 19.79 0 0 1-6-6A19.77 19.77 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12.81.33 1.6.62 2.35a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.29 1.54.5 2.35.62A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="cl-info">
+                <div class="cl-label">Phone</div>
+                <div class="cl-val">216-612-2818</div>
+              </div>
+              <span class="cl-arrow">&rarr;</span>
+            </div>
 
             <div class="contact-link" onclick="navigator.clipboard.writeText('S01374246@acad.tri-c.edu');showToast('&#128231;','Email copied to clipboard!')">
               <div class="cl-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -1955,7 +1847,7 @@ body {
               <span class="cl-arrow">&rarr;</span>
             </div>
 
-<div class="contact-link" onclick="window.open('https://github.com/enxtq/it2310-portfolio','_blank')">
+            <div class="contact-link" onclick="window.open('https://github.com/enxtq/it2310-portfolio','_blank')">
               <div class="cl-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
               <div class="cl-info">
                 <div class="cl-label">GitHub</div>
@@ -1964,11 +1856,11 @@ body {
               <span class="cl-arrow">&rarr;</span>
             </div>
 
-            <div class="contact-link" onclick="showToast('&#128188;','Opening LinkedIn...')">
+            <div class="contact-link" onclick="window.open('https://www.linkedin.com/in/adrian-peterson-087b3a406/','_blank')">
               <div class="cl-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
               <div class="cl-info">
                 <div class="cl-label">LinkedIn</div>
-                <div class="cl-val">linkedin.com/in/adrianpeterson</div>
+                <div class="cl-val">www.linkedin.com/in/adrian-peterson-087b3a406/</div>
               </div>
               <span class="cl-arrow">&rarr;</span>
             </div>
@@ -2270,6 +2162,16 @@ body {
 })();
 
 function doLogin(){
+  const user = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value.trim();
+  if(user === '' || !user.includes('@') || !user.includes('.')){
+    showToast('&#9888;','Please enter a valid email address.');
+    return;
+  }
+  if(pass === ''){
+    showToast('&#9888;','Please enter a password.');
+    return;
+  }
   enterAsGuest();
 }
 function enterAsGuest(){
@@ -2398,86 +2300,44 @@ const GAMES = [
   {
     title:'Castle Siege Wars', creator:'Adrian Peterson', rating:'94%', visits:'12.4K',
     tags:['strategy','multiplayer','pvp'], cat:'strategy', live:true, status:'online',
-    bg:'linear-gradient(135deg,#0e1628,#1a2d52,#2a4080)', ico:'🏰',
+    bg:'linear-gradient(135deg,#0e1628,#1a2d52,#2a4080)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v6H3z"/><path d="M6 9v10h12V9"/></svg>',
     desc:'A large-scale medieval strategy game where players build and defend castles, command armies, and fight for kingdom dominance. Features real-time PvP battles, alliance systems, and a 20-stage campaign.',
     features:['⚔️ Real-time PvP castle battles','🏰 Build & upgrade 40+ structures','🤝 Alliance & guild system','🗺️ 20-stage story campaign','🏆 Ranked leaderboard seasons']
   },
   {
     title:'Jungle Temple Run', creator:'Adrian Peterson', rating:'91%', visits:'8.7K',
-    tags:['adventure','exploration','parkour'], cat:'adventure', status:'online',
-    bg:'linear-gradient(135deg,#081408,#0f2a10,#1a4a1a)', ico:'🌿',
+    tags:['adventure','exploration','parkour'], cat:'adventure', live:true, status:'online',
+    bg:'linear-gradient(135deg,#081408,#0f2a10,#1a4a1a)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l8-16 8 16H4z"/><path d="M12 10v6"/></svg>',
     desc:'Race through ancient jungle temples full of traps, puzzles, and hidden treasures. Unlock new characters, collect relics, and compete on time-trial leaderboards with friends.',
     features:['🌿 10 unique temple environments','💎 150+ collectible relics','⏱️ Time-trial leaderboards','🧩 Environmental puzzles','👤 Unlockable explorer characters']
   },
   {
     title:'Galactic Defenders', creator:'Adrian Peterson', rating:'97%', visits:'15.1K',
     tags:['shooter','space','coop'], cat:'shooter', live:true, status:'online',
-    bg:'linear-gradient(135deg,#08080f,#160d2a,#2a1a4a)', ico:'🚀',
+    bg:'linear-gradient(135deg,#08080f,#160d2a,#2a1a4a)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>',
     desc:'Defend the galaxy from endless alien waves in this fast-paced co-op shooter. Choose from 8 hero classes, upgrade your weapons, and take on massive boss battles with up to 4 players.',
     features:['🚀 8 unique hero classes','👾 60+ enemy types & bosses','🔫 Weapon upgrade system','👥 4-player co-op mode','🌌 5 galaxy-themed maps']
   },
   {
     title:'Tycoon Metropolis', creator:'Adrian Peterson', rating:'89%', visits:'6.3K',
-    tags:['tycoon','building','economy'], cat:'tycoon', status:'maintenance',
-    bg:'linear-gradient(135deg,#1a0808,#3a1010,#5a1a1a)', ico:'🏙️',
+    tags:['tycoon','building','economy'], cat:'tycoon', live:true, status:'online',
+    bg:'linear-gradient(135deg,#1a0808,#3a1010,#5a1a1a)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16V8H4v12z"/><path d="M8 8V4h8v4"/></svg>',
     desc:'Build a thriving city from the ground up. Manage your economy, attract residents, construct landmarks, and become the richest mayor in the server. Features an advanced economy and citizen AI.',
     features:['🏗️ 80+ constructable buildings','💰 Dynamic economy simulation','👥 Citizen happiness system','🏆 Richest mayor leaderboard','⚡ Random event system (disasters, bonuses)']
   },
   {
     title:'Sky Obby Challenge', creator:'Adrian Peterson', rating:'92%', visits:'9.8K',
-    tags:['obby','platformer','challenge'], cat:'obby', status:'online',
-    bg:'linear-gradient(135deg,#0a1a2e,#1a3a6e,#3a6aae)', ico:'☁️',
+    tags:['obby','platformer','challenge'], cat:'obby', live:true, status:'online',
+    bg:'linear-gradient(135deg,#0a1a2e,#1a3a6e,#3a6aae)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l6-16 6 16H4z"/><path d="M6 10h12"/></svg>',
     desc:'A sky-high obstacle course with 100 stages of increasing difficulty. Jump between clouds, dodge moving platforms, and collect stars to unlock hidden bonus levels in the sky.',
     features:['☁️ 100 handcrafted stages','⭐ Hidden star collectibles','🎯 Bonus challenge levels','🏁 Weekly difficulty rotations','👫 Race friends in co-op mode']
   },
   {
-    title:'Zombie Survival Arena', creator:'Adrian Peterson', rating:'88%', visits:'5.2K',
-    tags:['shooter','survival','horror'], cat:'shooter', status:'maintenance',
-    bg:'linear-gradient(135deg,#1a0a0a,#3a1a1a,#5a2a2a)', ico:'🧟',
-    desc:'Survive endless zombie waves in a post-apocalyptic arena. Scavenge for weapons, build barricades, and work together with your team to outlast the horde. Special boss zombies appear every 10 rounds.',
-    features:['🧟 Endless survival wave mode','🔧 Craft & upgrade barricades','🔫 30+ scavengeable weapons','💀 Boss zombie encounters','🌙 Day/night cycle with dynamic spawning']
-  },
-  {
-    title:'Pet Simulator X', creator:'Adrian Peterson', rating:'95%', visits:'18.9K',
-    tags:['tycoon','pets','collect'], cat:'tycoon', live:true, status:'online',
-    bg:'linear-gradient(135deg,#1a0a2e,#3a1a5e,#5a2a8e)', ico:'🐾',
-    desc:'Collect, train, and evolve hundreds of unique pets. Hatch rare eggs, complete quests, and show off your legendary pets to other players. The most popular game in Adrian\'s portfolio!',
-    features:['🐾 200+ collectable pets','🥚 Rare & legendary egg hatching','📈 Pet leveling & evolution','🏆 Pet battle tournaments','🌟 Weekly limited-edition events']
-  },
-  {
-    title:'Ninja Training Grounds', creator:'Adrian Peterson', rating:'90%', visits:'7.1K',
-    tags:['adventure','combat','rpg'], cat:'adventure', status:'maintenance',
-    bg:'linear-gradient(135deg,#0a0a0a,#1a1a2a,#2a2a4a)', ico:'🥷',
-    desc:'Train to become the ultimate ninja in this action RPG. Master sword combat, unlock jutsu abilities, climb the clan rankings, and face off against other players in the tournament arena.',
-    features:['🥷 4 ninja class paths','⚡ 20+ unlockable jutsu','🏯 Clan system & wars','🗡️ PvP tournament arena','📖 Story quest line with cutscenes']
-  },
-  {
     title:'Tower Defense Legends', creator:'Adrian Peterson', rating:'93%', visits:'11.6K',
-    tags:['strategy','tower defense','coop'], cat:'strategy', status:'online',
-    bg:'linear-gradient(135deg,#0a1a0a,#1a3a1a,#2a5a2a)', ico:'🗼',
+    tags:['strategy','tower defense','coop'], cat:'strategy', live:true, status:'online',
+    bg:'linear-gradient(135deg,#0a1a0a,#1a3a1a,#2a5a2a)', ico:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v6H5z"/><path d="M7 9v10h10V9"/></svg>',
     desc:'Place and upgrade legendary towers to stop wave after wave of enemies. Unlock hero units, master elemental weaknesses, and team up with a friend to tackle the brutal endless mode.',
     features:['🗼 35 unique tower types','🌊 50 enemy wave patterns','🦸 Unlockable hero units','🔥 Elemental weakness system','♾️ Endless co-op survival mode']
-  },
-  {
-    title:'Rainbow Obby Deluxe', creator:'Adrian Peterson', rating:'87%', visits:'4.5K',
-    tags:['obby','casual','colorful'], cat:'obby', status:'offline',
-    bg:'linear-gradient(135deg,#2e0a2e,#5e1a5e,#8e2a8e)', ico:'🌈',
-    desc:'A vibrant, colorful obstacle course perfect for all ages. Dance through rainbow stages, collect paint cans, and unlock color-changing character skins. A relaxing but rewarding experience.',
-    features:['🌈 60 rainbow-themed stages','🎨 Unlockable color skins','🖌️ Paint can collectibles','🎵 Catchy original soundtrack','👶 Beginner-friendly checkpoints']
-  },
-  {
-    title:'Pirate Treasure Quest', creator:'Adrian Peterson', rating:'91%', visits:'7.8K',
-    tags:['adventure','pirates','treasure'], cat:'adventure', status:'offline',
-    bg:'linear-gradient(135deg,#1a1a0a,#3a3a1a,#5a5a2a)', ico:'🏴‍☠️',
-    desc:'Sail the high seas, discover hidden islands, and hunt for legendary treasure chests. Build and upgrade your pirate ship, recruit a crew, and battle rival pirates for dominance of the oceans.',
-    features:['⚓ 8 explorable pirate islands','🚢 Ship building & upgrades','💰 100+ hidden treasure chests','⚔️ Ship-to-ship cannon battles','🦜 Crew recruitment system']
-  },
-  {
-    title:'Robot Factory Tycoon', creator:'Adrian Peterson', rating:'86%', visits:'3.9K',
-    tags:['tycoon','robots','automation'], cat:'tycoon', status:'offline',
-    bg:'linear-gradient(135deg,#0a0a1a,#1a1a3a,#2a2a5a)', ico:'🤖',
-    desc:'Build an automated robot factory from scratch. Design assembly lines, program robot behaviors, and optimize your production to earn the most credits per hour. A unique engineering tycoon experience.',
-    features:['🤖 50+ robot types to build','⚙️ Visual assembly line editor','🏭 Multi-floor factory design','📊 Production analytics dashboard','🔬 Research & technology tree']
   },
 ];
 
@@ -2491,7 +2351,7 @@ function openGameModal(g) {
     emojiEl.style.cssText = 'position:relative;z-index:1;font-size:5rem;';
     banner.insertBefore(emojiEl, banner.firstChild);
   }
-  emojiEl.textContent = g.ico;
+  emojiEl.innerHTML = g.ico;
   document.getElementById('gmTitle').textContent = g.title;
   document.getElementById('gmCreator').textContent = 'by ' + g.creator + ' · ' + g.cat;
   document.getElementById('gmDesc').textContent = g.desc;
@@ -2525,8 +2385,10 @@ function openGameModal(g) {
   // Play button
   document.getElementById('gmPlayBtn').onclick = () => {
     closeGameModal();
+    currentGame = g;
     showPage('game');
     showToast('🎮', 'Launching ' + g.title + '...');
+    initGameForCurrent();
   };
 
   document.getElementById('game-modal-overlay').classList.add('open');
@@ -2675,8 +2537,14 @@ const OBBY_DATA = [
   {label:'Lua Scripting', info:'Primary language in Roblox Studio · scripted AI, economies, UI, physics.', level:'3 yrs', col:'#8b5cf6'},
   {label:'Game Design', info:'12+ published Roblox games · level design, mechanics, balancing.', level:'Expert', col:'#10b981'},
   {label:'3D Modeling', info:'Custom environments & accessories in Blender and Roblox Studio tools.', level:'Advanced', col:'#f97316'},
+  {label:'Roblox Studio', info:'Primary IDE for 3 years · all game modes, terrain, lighting.', level:'Expert', col:'#00A2FF'},
+  {label:'UI/UX Design', info:'In-game menus, HUDs, intuitive interfaces for games.', level:'Advanced', col:'#ec4899'},
+  {label:'Multiplayer', info:'Real-time PvP, server scripts, remote events.', level:'Expert', col:'#3b82f6'},
+  {label:'Economy Systems', info:'In-game currencies, shop logic, balancing.', level:'Advanced', col:'#f59e0b'},
+  {label:'Animation', info:'CSS keyframes, Roblox tween service, smooth transitions.', level:'Advanced', col:'#10b981'},
 ];
 let OB = {};
+let currentGame = null;
 function initObby(){
   const cv = document.getElementById('cv-obby');
   if(!cv) return;
@@ -2693,7 +2561,11 @@ function initObby(){
     {x:570, y:H-210,w:120, h:18, col:'#1e3a5f', cp:2},
     {x:760, y:H-260,w:120, h:18, col:'#1e3a5f', cp:3},
     {x:960, y:H-310,w:120, h:18, col:'#1e3a5f', cp:4},
-    {x:1160,y:H-310,w:200, h:18, col:'#00A2FF'},
+    {x:1160,y:H-360,w:120, h:18, col:'#1e3a5f', cp:5},
+    {x:1350,y:H-410,w:120, h:18, col:'#1e3a5f', cp:6},
+    {x:1540,y:H-460,w:120, h:18, col:'#1e3a5f', cp:7},
+    {x:1730,y:H-510,w:120, h:18, col:'#1e3a5f', cp:8},
+    {x:1920,y:H-510,w:200, h:18, col:'#00A2FF', cp:9},
   ];
   const cpHit = new Set();
   let cam=0;
@@ -2704,6 +2576,7 @@ function initObby(){
   document.addEventListener('keyup',onKey);
 
   let won=false, wonTimer=0;
+  let particles = [];
 
   function loop(){
     gameLoops['obby']=requestAnimationFrame(loop);
@@ -2726,11 +2599,23 @@ function initObby(){
       if(keys['ArrowLeft']||keys['KeyA']) p.vx=Math.max(p.vx-.22,-2.8);
       else if(keys['ArrowRight']||keys['KeyD']) p.vx=Math.min(p.vx+.18,2.8);
       else p.vx*=0.82;
-      if((keys['Space']||keys['KeyW']||keys['ArrowUp'])&&p.grounded){ p.vy=-8.5; p.grounded=false; }
+      if((keys['Space']||keys['KeyW']||keys['ArrowUp'])&&p.grounded){ 
+      p.vy=-8.5; p.grounded=false; 
+      for(let i=0;i<5;i++) particles.push({x:p.x+p.w/2, y:p.y+p.h, vx:(Math.random()-0.5)*2, vy:Math.random()*-2-1, life:30});
+    }
     }
     p.vy+=0.32;
     p.x+=p.vx; p.y+=p.vy;
     p.grounded=false;
+
+    // update particles
+    particles = particles.filter(par => {
+      par.x += par.vx;
+      par.y += par.vy;
+      par.vy += 0.1;
+      par.life--;
+      return par.life > 0;
+    });
 
     // platform collision
     for(const pl of platforms){
@@ -2763,6 +2648,15 @@ function initObby(){
         ctx.fillText(d.label,px+pl.w/2,py-6);
       }
     }
+
+    // draw particles
+    ctx.fillStyle='#00A2FF';
+    for(const par of particles){
+      const px=par.x-cam;
+      ctx.globalAlpha = par.life / 30;
+      ctx.beginPath(); ctx.arc(px, par.y, 2, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
 
     // draw player
     const px=p.x-cam;
@@ -2825,6 +2719,7 @@ function initMine(){
     blocks.push({x:OX+c*(BW+5),y:OY+r*(BH+5),w:BW,h:BH,hp:3,maxHp:3,data:d,col:oreColors[d.ore],broken:false,anim:0});
     di++;
   }
+  let particles = [];
 
   cv.onclick=e=>{
     const rect=cv.getBoundingClientRect();
@@ -2833,6 +2728,7 @@ function initMine(){
     for(const b of blocks){
       if(!b.broken&&mx>b.x&&mx<b.x+b.w&&my>b.y&&my<b.y+b.h){
         b.hp--; b.anim=10;
+        for(let i=0;i<3;i++) particles.push({x:mx, y:my, vx:(Math.random()-0.5)*3, vy:Math.random()*-2-1, life:20, col:b.col});
         if(b.hp<=0){
           b.broken=true;
           addPipCard('mine',b.data.n,b.data.i,b.data.l,b.data.col);
@@ -2846,6 +2742,15 @@ function initMine(){
     gameLoops['mine']=requestAnimationFrame(loop);
     ctx.fillStyle='#0a0f1e';
     ctx.fillRect(0,0,W,H);
+
+    // update particles
+    particles = particles.filter(par => {
+      par.x += par.vx;
+      par.y += par.vy;
+      par.vy += 0.1;
+      par.life--;
+      return par.life > 0;
+    });
 
     // cave bg lines
     ctx.strokeStyle='rgba(255,255,255,.03)';
@@ -2887,23 +2792,28 @@ function initMine(){
         ctx.fillText(b.data.ore.toUpperCase(),b.x+sx+b.w/2,b.y+sy+16);
       }
     }
+
+    // draw particles
+    for(const par of particles){
+      ctx.fillStyle = par.col;
+      ctx.globalAlpha = par.life / 20;
+      ctx.beginPath(); ctx.arc(par.x, par.y, 3, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
     ctx.textAlign='left';
   }
   loop();
 }
 
 /* ── GAME 3: PROJECT FISHER ── */
-const FISH_PROJECTS=[
-  {n:'Pet Simulator X',i:'18.9K visits · Tycoon/Pets genre · collect, train, evolve hundreds of pets.',r:'Legendary',col:'#f59e0b'},
-  {n:'Galactic Defenders',i:'15.1K visits · Space shooter · co-op wave defense with upgradeable ships.',r:'Rare',col:'#3b82f6'},
-  {n:'Castle Siege Wars',i:'12.4K visits · Medieval strategy · PvP castle building & army command.',r:'Rare',col:'#8b5cf6'},
-  {n:'Tower Defense Legends',i:'11.6K visits · Tower defense · 30 enemy types, 20 towers.',r:'Uncommon',col:'#10b981'},
-  {n:'Sky Obby Challenge',i:'9.8K visits · Obby platformer · 200 stages, rising difficulty.',r:'Uncommon',col:'#0ea5e9'},
-  {n:'Jungle Temple Run',i:'8.7K visits · Adventure parkour · ancient temples, hidden relics.',r:'Common',col:'#84cc16'},
-  {n:'Pirate Treasure Quest',i:'7.8K visits · Exploration RPG · ocean islands & treasure hunting.',r:'Common',col:'#f97316'},
-  {n:'Ninja Training Grounds',i:'7.1K visits · Skill/combat · master 8 ninja arts.',r:'Common',col:'#a78bfa'},
-  {n:'Tycoon Metropolis',i:'6.3K visits · City builder tycoon · manage economy & citizens.',r:'Common',col:'#fb7185'},
-  {n:'Zombie Survival Arena',i:'5.2K visits · Survival horror · waves, barricades, escape routes.',r:'Common',col:'#6ee7b7'},
+const FISH_PROJECTS = [
+  {n:'Castle Siege Wars', i:'12.4K visits · Medieval strategy · PvP castle building & army command.', r:'Rare', col:'#8b5cf6'},
+  {n:'Jungle Temple Run', i:'8.7K visits · Adventure parkour · ancient temples, hidden relics.', r:'Rare', col:'#84cc16'},
+  {n:'Galactic Defenders', i:'15.1K visits · Space shooter · co-op wave defense with upgradeable ships.', r:'Rare', col:'#3b82f6'},
+  {n:'Tycoon Metropolis', i:'6.3K visits · City builder tycoon · manage economy & citizens.', r:'Rare', col:'#fb7185'},
+  {n:'Sky Obby Challenge', i:'9.8K visits · Obby platformer · 100 sky stages with rising difficulty.', r:'Rare', col:'#0ea5e9'},
+  {n:'Tower Defense Legends', i:'11.6K visits · Tower defense · 30 enemy types, 20 towers.', r:'Rare', col:'#10b981'},
 ];
 let FISH={state:'idle',bobX:0,bobY:0,biteTimer:0,biteWindow:0,castAnim:0,caught:[],waterRipple:0,rodAngle:0};
 
@@ -3054,6 +2964,7 @@ function initShoot(){
   document.getElementById('pie-shoot').style.display='';
   SHOOT_TARGETS=[]; SHOOT_SCORE=0; SHOOT_HIT=new Set();
   let spawnTimer=0, flashMsg='', flashTimer=0;
+  let particles = [];
 
   function spawnTarget(){
     const skill=SHOOT_SKILLS[Math.floor(Math.random()*SHOOT_SKILLS.length)];
@@ -3076,6 +2987,7 @@ function initShoot(){
     for(const t of SHOOT_TARGETS){
       if(!t.hit&&mx>t.x-t.w/2&&mx<t.x+t.w/2&&my>t.y-t.h/2&&my<t.y+t.h/2){
         t.hit=true; t.hitAnim=30; SHOOT_SCORE++;
+        for(let i=0;i<5;i++) particles.push({x:mx, y:my, vx:(Math.random()-0.5)*4, vy:Math.random()*-3-1, life:25, col:t.skill.col});
         if(!SHOOT_HIT.has(t.skill.n)){
           SHOOT_HIT.add(t.skill.n);
           addPipCard('shoot',t.skill.n,t.skill.i,t.skill.l,t.skill.col);
@@ -3090,6 +3002,15 @@ function initShoot(){
     gameLoops['shoot']=requestAnimationFrame(loop);
     ctx.fillStyle='#0d0d1a';
     ctx.fillRect(0,0,W,H);
+
+    // update particles
+    particles = particles.filter(par => {
+      par.x += par.vx;
+      par.y += par.vy;
+      par.vy += 0.1;
+      par.life--;
+      return par.life > 0;
+    });
 
     // range BG
     ctx.fillStyle='#0a1020';
@@ -3140,6 +3061,14 @@ function initShoot(){
       ctx.globalAlpha=1;
     }
 
+    // draw particles
+    for(const par of particles){
+      ctx.fillStyle = par.col;
+      ctx.globalAlpha = par.life / 25;
+      ctx.beginPath(); ctx.arc(par.x, par.y, 4, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
     // score
     ctx.fillStyle='#fff'; ctx.font='bold 14px Inter,sans-serif'; ctx.textAlign='left';
     ctx.fillText('Score: '+SHOOT_SCORE,16,H-12);
@@ -3159,6 +3088,530 @@ function initShoot(){
 }
 
 /* Auto-start obby when Play page first opens */
+function initGameForCurrent(){
+  if (!currentGame) return;
+  document.getElementById('current-game-title').textContent = currentGame.title;
+  // Clear previous game
+  cancelAnimationFrame(gameLoops['current']);
+  const cv = document.getElementById('cv-current');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  document.getElementById('pic-current').innerHTML = '';
+  document.getElementById('pie-current').style.display = '';
+
+  if (currentGame.title === 'Castle Siege Wars') {
+    initCastleSiege(cv, ctx, W, H);
+  } else if (currentGame.title === 'Jungle Temple Run') {
+    initJungleRun(cv, ctx, W, H);
+  } else if (currentGame.title === 'Galactic Defenders') {
+    initGalacticDefenders(cv, ctx, W, H);
+  } else if (currentGame.title === 'Tycoon Metropolis') {
+    initTycoonMetropolis(cv, ctx, W, H);
+  } else if (currentGame.title === 'Sky Obby Challenge') {
+    initSkyObby(cv, ctx, W, H);
+  } else if (currentGame.title === 'Tower Defense Legends') {
+    initTowerDefense(cv, ctx, W, H);
+  }
+}
+
+/* ── CASTLE SIEGE WARS MINI-GAME ── */
+function initCastleSiege(cv, ctx, W, H) {
+  let towers = [], enemies = [], projectiles = [], score = 0, wave = 1, health = 100;
+  let spawnTimer = 0, gameOver = false;
+
+  cv.onclick = e => {
+    if (gameOver) {
+      initCastleSiege(cv, ctx, W, H);
+      return;
+    }
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (W / rect.width);
+    const y = (e.clientY - rect.top) * (H / rect.height);
+    if (y > H * 0.7) towers.push({x, y: H * 0.75, range: 80, damage: 10, cooldown: 0});
+  };
+
+  function loop() {
+    if (gameOver) return;
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Spawn enemies
+    spawnTimer++;
+    if (spawnTimer > Math.max(60 - wave * 10, 20)) {
+      spawnTimer = 0;
+      enemies.push({x: 0, y: H * 0.6, vx: 0.5 + wave * 0.1, health: 20 + wave * 5});
+      if (enemies.length > 10 + wave) return; // Limit enemies
+    }
+
+    // Check for wave clear
+    if (enemies.length === 0 && spawnTimer > 200) {
+      wave++;
+      spawnTimer = 0;
+    }
+
+    // Update enemies
+    enemies = enemies.filter(e => {
+      e.x += e.vx;
+      if (e.x > W) { health -= 10; return false; }
+      return e.health > 0;
+    });
+
+    // Update towers
+    towers.forEach(t => {
+      t.cooldown--;
+      enemies.forEach(e => {
+        const dist = Math.sqrt((t.x - e.x)**2 + (t.y - e.y)**2);
+        if (dist < t.range && t.cooldown <= 0) {
+          projectiles.push({x: t.x, y: t.y, tx: e.x, ty: e.y, speed: 3, damage: t.damage});
+          t.cooldown = 60;
+        }
+      });
+    });
+
+    // Update projectiles
+    projectiles = projectiles.filter(p => {
+      const dx = p.tx - p.x, dy = p.ty - p.y;
+      const dist = Math.sqrt(dx**2 + dy**2);
+      if (dist < 5) {
+        enemies.forEach(e => {
+          if (Math.abs(e.x - p.tx) < 20 && Math.abs(e.y - p.ty) < 20) e.health -= p.damage;
+        });
+        return false;
+      }
+      p.x += (dx / dist) * p.speed;
+      p.y += (dy / dist) * p.speed;
+      return true;
+    });
+
+    // Draw
+    ctx.fillStyle = '#4a4a4a';
+    ctx.fillRect(0, H * 0.7, W, H * 0.3);
+    towers.forEach(t => {
+      ctx.fillStyle = '#666';
+      ctx.beginPath(); ctx.arc(t.x, t.y, 15, 0, Math.PI*2); ctx.fill();
+    });
+    enemies.forEach(e => {
+      ctx.fillStyle = '#f00';
+      ctx.beginPath(); ctx.arc(e.x, e.y, 10, 0, Math.PI*2); ctx.fill();
+    });
+    projectiles.forEach(p => {
+      ctx.fillStyle = '#ff0';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI*2); ctx.fill();
+    });
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Wave: ${wave} Health: ${health} Score: ${score}`, 10, 30);
+    ctx.fillText('Click below to place towers', 10, 50);
+
+    if (health <= 0) {
+      gameOver = true;
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#f00';
+      ctx.font = 'bold 24px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over', W/2, H/2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px Inter';
+      ctx.fillText('Click to Restart', W/2, H/2 + 20);
+      ctx.textAlign = 'left';
+    }
+  }
+  loop();
+}
+
+/* ── JUNGLE TEMPLE RUN MINI-GAME ── */
+function initJungleRun(cv, ctx, W, H) {
+  let player = {x: 50, y: H - 100, vx: 0, vy: 0, grounded: false};
+  let platforms = [];
+  let score = 0, gameOver = false, cameraX = 0;
+
+  for (let i = 0; i < 50; i++) {
+    platforms.push({x: i * 100, y: H - 50 - Math.random() * 100, w: 80, h: 20});
+  }
+
+  const keys = {};
+  document.addEventListener('keydown', e => keys[e.code] = true);
+  document.addEventListener('keyup', e => keys[e.code] = false);
+
+  cv.onclick = () => {
+    if (gameOver) initJungleRun(cv, ctx, W, H);
+  };
+
+  function loop() {
+    if (gameOver) return;
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#0a2a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Update player
+    if (keys['ArrowLeft'] || keys['KeyA']) player.vx = Math.max(player.vx - 0.2, -3);
+    else if (keys['ArrowRight'] || keys['KeyD']) player.vx = Math.min(player.vx + 0.2, 3);
+    else player.vx *= 0.9;
+    if ((keys['Space'] || keys['KeyW']) && player.grounded) player.vy = -8;
+    player.vy += 0.3;
+    player.x += player.vx;
+    player.y += player.vy;
+    player.grounded = false;
+
+    platforms.forEach(p => {
+      if (player.x < p.x + p.w && player.x + 20 > p.x && player.y < p.y + p.h && player.y + 20 > p.y && player.vy >= 0) {
+        player.y = p.y - 20;
+        player.vy = 0;
+        player.grounded = true;
+        score++;
+      }
+    });
+
+    // Camera follow
+    cameraX = Math.max(player.x - W / 2, 0);
+
+    if (player.y > H) gameOver = true;
+
+    // Draw
+    platforms.forEach(p => {
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(p.x - cameraX, p.y, p.w, p.h);
+    });
+    ctx.fillStyle = '#00f';
+    ctx.fillRect(player.x - cameraX, player.y, 20, 20);
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Score: ${score}`, 10, 30);
+    ctx.fillText('A/D or Arrows to move, Space to jump', 10, 50);
+
+    if (gameOver) {
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#f00';
+      ctx.font = 'bold 24px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over', W/2, H/2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px Inter';
+      ctx.fillText('Click to Restart', W/2, H/2 + 20);
+      ctx.textAlign = 'left';
+    }
+  }
+  loop();
+}
+
+/* ── GALACTIC DEFENDERS MINI-GAME ── */
+function initGalacticDefenders(cv, ctx, W, H) {
+  let player = {x: W/2, y: H - 50, speed: 3};
+  let bullets = [], enemies = [], score = 0, gameOver = false;
+  let spawnTimer = 0;
+
+  cv.onclick = e => {
+    if (gameOver) {
+      initGalacticDefenders(cv, ctx, W, H);
+      return;
+    }
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (W / rect.width);
+    bullets.push({x: player.x, y: player.y, vx: 0, vy: -5});
+  };
+
+  function loop() {
+    if (gameOver) return;
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#000011';
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    ctx.fillStyle = '#fff';
+    for (let i = 0; i < 50; i++) {
+      ctx.fillRect((i * 37) % W, (i * 23) % H, 1, 1);
+    }
+
+    // Update player
+    if (keys['ArrowLeft'] || keys['KeyA']) player.x = Math.max(player.x - player.speed, 0);
+    if (keys['ArrowRight'] || keys['KeyD']) player.x = Math.min(player.x + player.speed, W - 20);
+
+    // Spawn enemies
+    spawnTimer++;
+    if (spawnTimer > 100) {
+      spawnTimer = 0;
+      enemies.push({x: Math.random() * W, y: 0, vy: 1, health: 1});
+    }
+
+    // Update bullets
+    bullets = bullets.filter(b => {
+      b.y += b.vy;
+      enemies.forEach(e => {
+        if (Math.abs(b.x - e.x) < 15 && Math.abs(b.y - e.y) < 15) {
+          e.health--;
+          score++;
+          return false;
+        }
+      });
+      return b.y > 0;
+    });
+
+    // Update enemies
+    enemies = enemies.filter(e => {
+      e.y += e.vy;
+      if (e.y > H) { gameOver = true; return false; }
+      return e.health > 0;
+    });
+
+    // Draw
+    ctx.fillStyle = '#0f0';
+    ctx.fillRect(player.x - 10, player.y, 20, 20);
+    bullets.forEach(b => {
+      ctx.fillStyle = '#ff0';
+      ctx.fillRect(b.x - 1, b.y, 2, 5);
+    });
+    enemies.forEach(e => {
+      ctx.fillStyle = '#f00';
+      ctx.fillRect(e.x - 5, e.y, 10, 10);
+    });
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Score: ${score}`, 10, 30);
+    ctx.fillText('A/D to move, Click to shoot', 10, 50);
+
+    if (gameOver) {
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#f00';
+      ctx.font = 'bold 24px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over', W/2, H/2);
+      ctx.textAlign = 'left';
+    }
+  }
+  loop();
+}
+
+/* ── TYCOON METROPOLIS MINI-GAME ── */
+function initTycoonMetropolis(cv, ctx, W, H) {
+  let buildings = [], money = 100, income = 0, gameTime = 0;
+
+  cv.onclick = e => {
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (W / rect.width);
+    const y = (e.clientY - rect.top) * (H / rect.height);
+    if (money >= 50) {
+      buildings.push({x, y, type: 'house', income: 5});
+      money -= 50;
+    }
+  };
+
+  function loop() {
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#87CEEB';
+    ctx.fillRect(0, 0, W, H);
+
+    gameTime++;
+    if (gameTime % 300 === 0) {
+      income = buildings.reduce((sum, b) => sum + b.income, 0);
+      money += income;
+    }
+
+    // Draw ground
+    ctx.fillStyle = '#228B22';
+    ctx.fillRect(0, H * 0.8, W, H * 0.2);
+
+    buildings.forEach(b => {
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(b.x - 10, b.y - 20, 20, 20);
+    });
+
+    ctx.fillStyle = '#000';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Money: $${money} Income: $${income}/min`, 10, 30);
+    ctx.fillText('Click to build houses ($50)', 10, 50);
+  }
+  loop();
+}
+
+/* ── SKY OBBY CHALLENGE MINI-GAME ── */
+function initSkyObby(cv, ctx, W, H) {
+  let player = {x: 50, y: H - 100, vx: 0, vy: 0, grounded: false};
+  let platforms = [];
+  let score = 0, gameOver = false;
+
+  for (let i = 0; i < 20; i++) {
+    platforms.push({x: i * 80, y: H - 50 - Math.random() * 200, w: 60, h: 15});
+  }
+
+  cv.onclick = () => {
+    if (gameOver) initSkyObby(cv, ctx, W, H);
+  };
+
+  function loop() {
+    if (gameOver) return;
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#87CEEB';
+    ctx.fillRect(0, 0, W, H);
+
+    // Clouds
+    ctx.fillStyle = '#fff';
+    for (let i = 0; i < 10; i++) {
+      ctx.beginPath();
+      ctx.arc(100 + i * 150, 100 + Math.sin(gameTime * 0.01 + i) * 20, 30, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // Update player
+    player.vy += 0.3;
+    player.x += player.vx;
+    player.y += player.vy;
+    player.grounded = false;
+
+    platforms.forEach(p => {
+      if (player.x < p.x + p.w && player.x + 20 > p.x && player.y < p.y + p.h && player.y + 20 > p.y && player.vy >= 0) {
+        player.y = p.y - 20;
+        player.vy = 0;
+        player.grounded = true;
+        score++;
+      }
+    });
+
+    if (player.y > H) gameOver = true;
+
+    // Draw
+    platforms.forEach(p => {
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(p.x, p.y, p.w, p.h);
+    });
+    ctx.fillStyle = '#00f';
+    ctx.fillRect(player.x, player.y, 20, 20);
+
+    ctx.fillStyle = '#000';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Platforms: ${score}`, 10, 30);
+    ctx.fillText('Click to jump', 10, 50);
+
+    if (gameOver) {
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#f00';
+      ctx.font = 'bold 24px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over', W/2, H/2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px Inter';
+      ctx.fillText('Click to Restart', W/2, H/2 + 20);
+      ctx.textAlign = 'left';
+    }
+  }
+  loop();
+}
+
+/* ── TOWER DEFENSE LEGENDS MINI-GAME ── */
+function initTowerDefense(cv, ctx, W, H) {
+  let towers = [], enemies = [], projectiles = [], score = 0, health = 100;
+  let spawnTimer = 0, gameOver = false;
+
+  cv.onclick = e => {
+    if (gameOver) {
+      initTowerDefense(cv, ctx, W, H);
+      return;
+    }
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (W / rect.width);
+    const y = (e.clientY - rect.top) * (H / rect.height);
+    towers.push({x, y, range: 60, damage: 15, cooldown: 0});
+  };
+
+  function loop() {
+    if (gameOver) return;
+    gameLoops['current'] = requestAnimationFrame(loop);
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Path
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 20;
+    ctx.beginPath();
+    ctx.moveTo(0, H * 0.5);
+    ctx.lineTo(W, H * 0.5);
+    ctx.stroke();
+
+    // Spawn enemies
+    spawnTimer++;
+    if (spawnTimer > 150) {
+      spawnTimer = 0;
+      enemies.push({x: 0, y: H * 0.5, vx: 1, health: 30});
+    }
+
+    // Update enemies
+    enemies = enemies.filter(e => {
+      e.x += e.vx;
+      if (e.x > W) { health -= 20; return false; }
+      return e.health > 0;
+    });
+
+    // Update towers
+    towers.forEach(t => {
+      t.cooldown--;
+      enemies.forEach(e => {
+        const dist = Math.sqrt((t.x - e.x)**2 + (t.y - e.y)**2);
+        if (dist < t.range && t.cooldown <= 0) {
+          projectiles.push({x: t.x, y: t.y, tx: e.x, ty: e.y, speed: 4, damage: t.damage});
+          t.cooldown = 50;
+        }
+      });
+    });
+
+    // Update projectiles
+    projectiles = projectiles.filter(p => {
+      const dx = p.tx - p.x, dy = p.ty - p.y;
+      const dist = Math.sqrt(dx**2 + dy**2);
+      if (dist < 5) {
+        enemies.forEach(e => {
+          if (Math.abs(e.x - p.tx) < 20 && Math.abs(e.y - p.ty) < 20) e.health -= p.damage;
+        });
+        return false;
+      }
+      p.x += (dx / dist) * p.speed;
+      p.y += (dy / dist) * p.speed;
+      return true;
+    });
+
+    // Draw
+    towers.forEach(t => {
+      ctx.fillStyle = '#666';
+      ctx.beginPath(); ctx.arc(t.x, t.y, 12, 0, Math.PI*2); ctx.fill();
+    });
+    enemies.forEach(e => {
+      ctx.fillStyle = '#f00';
+      ctx.beginPath(); ctx.arc(e.x, e.y, 12, 0, Math.PI*2); ctx.fill();
+    });
+    projectiles.forEach(p => {
+      ctx.fillStyle = '#ff0';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI*2); ctx.fill();
+    });
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '16px Inter';
+    ctx.fillText(`Health: ${health} Score: ${score}`, 10, 30);
+    ctx.fillText('Click to place towers', 10, 50);
+
+    if (health <= 0) {
+      gameOver = true;
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#f00';
+      ctx.font = 'bold 24px Inter';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over', W/2, H/2 - 20);
+      ctx.fillStyle = '#fff';
+      ctx.font = '16px Inter';
+      ctx.fillText('Click to Restart', W/2, H/2 + 20);
+      ctx.textAlign = 'left';
+    }
+  }
+  loop();
+}
+
 function onShowPlayPage(){
   setTimeout(()=>initGame('obby'),100);
 }
